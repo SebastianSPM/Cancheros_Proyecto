@@ -1,8 +1,9 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
-      "destination": "/html/reservasadmin.html"
+      "destination": "/html/reservasadmin.html",
+      "permanent": false
     }
   ]
 }
