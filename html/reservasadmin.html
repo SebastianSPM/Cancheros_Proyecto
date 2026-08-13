@@ -97,44 +97,20 @@
                             <th>Ubicación</th>
                             <th>Fotos</th>
                         </tr>
-                        <!-- <tbody id="tablaReservas">  esto que esta comentado es solo de prueba para ver como queda la tabla
-
-    <tr>
-        <td>001</td>
-        <td>Sí</td>
-        <td>Cancha sintética</td>
-        <td>La Grama</td>
-        <td>$40.900</td>
-        <td>Calle 57</td>
-        <td>🖼️</td>
-    </tr>
-
-    <tr>
-        <td>002</td>
-        <td>Sí</td>
-        <td>Cancha sintética</td>
-        <td>Canchab</td>
-        <td>$40.900</td>
-        <td>Carrera 4</td>
-        <td>🖼️</td>
-    </tr>
-
-</tbody> -->
+                        <tbody id="tablaReservas">
+                        </tbody>
                     </thead>
                     <tbody id="tablaReservas">
-                        <tr id="sinReservas"> <!--este id permite que javascript encuentre el mensaje y lo elimine-->
-                            <td colspan="7" class="mensaje-sin-reservas">
+                        <tr id="sinReservas">
+                            <td id="mensajeSinReservas" colspan="7" class="mensaje-sin-reservas">
                                 No hay reservas agregadas todavía.
                             </td>
-                            <!--sebastian aqui cuando agregues datos, este mensaje desaparece y aparecen los datos ingresados-->
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
     </main>
-    <!-- MODAL -->
-
     <div class="modal fade" id="agregarCancha" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -156,12 +132,12 @@
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="" >Nombre de la cancha:</label>
-                                <input id="nombreCancha" type="text" class="col-md-10 bg-light border p-2 mt-3" minlength="3" maxlength="100" required>
+                                <input id="nombreCancha" type="text" class="col-md-10 bg-light border p-2 mt-3" minlength="3" maxlength="100">
                             </div>
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="">Precio:</label>
-                                <input id="precio" type="number" class="col-md-10 bg-light border p-2 mt-3" min="0" required>
+                                <input id="precio" type="number" class="col-md-10 bg-light border p-2 mt-3" min="0">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -172,14 +148,14 @@
                                 <div class="d-flex gap-3 mt-3">
     
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="disponible" id="disponibleSi" value="true" required>
+                                        <input class="form-check-input" type="radio" name="disponible" id="disponibleSi" value="true">
                                         <label class="form-check-label" for="disponibleSi">
                                             Activa
                                         </label>
                                     </div>
     
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="disponible" id="disponibleNo"value="false" required>
+                                        <input class="form-check-input" type="radio" name="disponible" id="disponibleNo"value="false">
                                         <label class="form-check-label" for="disponibleNo">
                                             Inactiva
                                         </label>
@@ -188,7 +164,7 @@
                             </div>
                             <div class="col-md-6 d-flex flex-column mb-3">
                                 <label for="">Fotos:</label>
-                                <input id="imagenCancha" type="file" class="form-control col-md-10 bg-light border p-2 mt-3" accept="image/*" required multiple>
+                                <input id="imagenCancha" type="file" class="form-control col-md-10 bg-light border p-2 mt-3" accept="image/*" multiple>
                             </div>
                         </div>
     
@@ -196,12 +172,12 @@
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="" >Ubicación:</label>
-                                <input id="ubicacion" type="text" class="col-md-10 bg-light border p-2 mt-3" required>
+                                <input id="ubicacion" type="text" class="col-md-10 bg-light border p-2 mt-3">
                             </div>
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="">Descripción:</label>
-                                <textarea id="descripcion" class="form-control col-md-10 bg-light border p-2 mt-3" rows="4" maxlength="300" required></textarea>
+                                <textarea id="descripcion" class="form-control col-md-10 bg-light border p-2 mt-3" rows="4" maxlength="300"></textarea>
                             </div>
                         </div>
                     </div>

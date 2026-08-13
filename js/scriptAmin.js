@@ -6,11 +6,14 @@ formCancha.addEventListener("submit", (event) => {
 
     const nombreCancha = document.getElementById("nombreCancha");
     const precio = document.getElementById("precio");
-    const disponible = document.querySelectorAll('input[name="disponible"]');
+    const disponible = document.querySelector('input[name="disponible"]:checked');
     const imagenCancha = document.getElementById("imagenCancha");
     const ubicacion = document.getElementById("ubicacion");
     const descripcion = document.getElementById("descripcion");
     const cerrarVentana = document.getElementById("cerrarVentana");
+    const ConReservas = document.getElementById("tablaReservas");
+    const mensajeSinReserva = document.getElementById("mensajeSinReservas");
+
     event.preventDefault();
     
     if(nombreCancha.value.trim() === ""){
@@ -86,6 +89,25 @@ formCancha.addEventListener("submit", (event) => {
         });
     }, { once: true });
 
+    const archivoImagen = imagenCancha.files[0];
+
+    const url = URL.createObjectURL(archivoImagen);
+
+    mensajeSinReserva.style.display = "none"
+    ConReservas.innerHTML += `
+        <tr>
+            <td>001</td>
+            <td>${disponible.value ? "Si" : "No"}</td>
+            <td>${descripcion.value}</td>
+            <td>${nombreCancha.value}</td>
+            <td>${precio.value}</td>
+            <td>${ubicacion.value}</td>
+            <td>
+                <img src="${url}" alt="${nombreCancha.value}" width="60" height="60" />
+            </td>
+        </tr>
+    `
+
     document.getElementById("cerrarVentana").click()
 
     nombreCancha.value = ""
@@ -94,5 +116,15 @@ formCancha.addEventListener("submit", (event) => {
     imagenCancha.value = "";
     ubicacion.value = "";
     descripcion.value = "";
+
 })
+
+
+/*
+
+
+
+
+
+*/
 
