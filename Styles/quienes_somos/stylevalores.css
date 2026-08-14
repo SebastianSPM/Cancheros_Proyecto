@@ -1,172 +1,112 @@
-/*==================================================
-=            SECCIÓN VALORES INNOVADORA
-==================================================*/
+/* ==========================================
+   SECCIÓN NUESTROS VALORES (LIMPIO Y CORREGIDO)
+   ========================================== */
 
 .valores-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 15px;
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: block !important;
 }
 
-.valores-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 580px;
-    height: 360px;
+.valores-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.25rem !important;
+    max-width: 750px !important;
     margin: 0 auto;
+    position: relative !important;
 }
 
 /* CHIPS DE VALORES */
 .valor-chip {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 50px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--gris, #2c3e50);
-    white-space: nowrap;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.6rem !important;
+    padding: 0.75rem 1.4rem !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 50px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    font-family: 'Source Sans 3', sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: var(--gris, #2c3e50) !important;
+    white-space: nowrap !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: all 0.3s ease !important;
     cursor: default;
-    z-index: 2;
 }
 
-/* Color del Ícono */
 .valor-chip i {
-    color: var(--verde, #28a745);
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
+    font-size: 1.15rem !important;
 }
 
-/* EFECTO HOVER INNOVADOR EN LOS CHIPS */
+/* HOVER EN CHIPS */
 .valor-chip:hover {
-    background: linear-gradient(135deg, var(--verde-oscuro, #1b4332), var(--verde, #2d6a4f));
-    color: #ffffff;
-    border-color: transparent;
-    transform: scale(1.08);
-    box-shadow: 0 12px 25px rgba(45, 106, 79, 0.25);
+    background: linear-gradient(135deg, #1b4332, #2d6a4f) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+    transform: translateY(-3px) scale(1.04) !important;
+    box-shadow: 0 8px 20px rgba(45, 106, 79, 0.25) !important;
 }
 
 .valor-chip:hover i {
-    color: var(--amarillo, #ffc107);
+    color: #ffc107 !important;
 }
 
-/* POSICIONAMIENTO EN ÓVALO/ÓRBITA */
-
-/* Arriba */
-.innovacion {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.innovacion:hover {
-    transform: translate(-50%, -4px) scale(1.08);
+/* CONTENEDOR INVISIBLE QUE FUERZA EL SALTO DE LÍNEA SIN DEFORMAR EL LOGO */
+.logo-central-wrapper {
+    flex-basis: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0.5rem 0 !important;
 }
 
-/* Diagonales Superiores */
-.seguridad {
-    top: 55px;
-    left: 20px;
-}
-
-.honestidad {
-    top: 55px;
-    right: 20px;
-}
-
-/* Laterales Centrales */
-.facilidad {
-    top: 50%;
-    left: -10px;
-    transform: translateY(-50%);
-}
-.facilidad:hover {
-    transform: translate(-4px, -50%) scale(1.08);
-}
-
-.transparencia {
-    top: 50%;
-    right: -10px;
-    transform: translateY(-50%);
-}
-.transparencia:hover {
-    transform: translate(4px, -50%) scale(1.08);
-}
-
-/* Abajo */
-.orientacion {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.orientacion:hover {
-    transform: translate(-50%, 4px) scale(1.08);
-}
-
-/* LOGO CENTRAL CON PULSO */
+/* LOGO CENTRAL CIRCULAR PERFECTO */
 .logo-central {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, var(--verde-oscuro, #1b4332), var(--verde, #2d6a4f));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--amarillo, #ffc107);
-    font-size: 2.5rem;
-    box-shadow: 0 0 0 8px rgba(45, 106, 79, 0.15), 0 10px 25px rgba(0, 0, 0, 0.15);
-    z-index: 1;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+
+    width: 85px !important;
+    height: 85px !important;
+    min-width: 85px !important;
+    min-height: 85px !important;
+    max-width: 85px !important;
+    max-height: 85px !important;
+    
+    background: linear-gradient(135deg, #1b4332, #2d6a4f) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffc107 !important;
+    font-size: 2.2rem !important;
+    z-index: 1 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     animation: pulse-glow 3s infinite alternate;
 }
 
-/* Animación de pulso continuo */
 @keyframes pulse-glow {
     0% {
         box-shadow: 0 0 0 8px rgba(45, 106, 79, 0.12), 0 10px 25px rgba(0, 0, 0, 0.1);
     }
     100% {
         box-shadow: 0 0 0 18px rgba(45, 106, 79, 0.03), 0 15px 30px rgba(0, 0, 0, 0.2);
-    }
-}
-
-/* RESPONSIVE PARA MÓVILES */
-@media (max-width: 576px) {
-    .valores-wrapper {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .valor-chip {
-        position: relative;
-        top: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        right: auto !important;
-        transform: none !important;
-        width: 80%;
-        justify-content: center;
-    }
-
-    .logo-central {
-        order: -1; /* Muestra el logo arriba en pantallas pequeñas */
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        margin-bottom: 15px;
     }
 }
