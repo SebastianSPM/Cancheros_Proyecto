@@ -68,7 +68,7 @@ body {
     border-right: none;
 }
 
-.mensaje-sin-reservas {
+.mensaje-sin-canchas {
     text-align: center;
     font-size: 14px;
 }
@@ -166,4 +166,38 @@ textarea{
     resize: none;
     height: 50px;
     max-height: 100px;
+}
+
+.trash-logo{
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.trash-logo:hover{
+    color: red;
+    transform: scale(1.2);
+}
+
+.imagenPanel{
+    border-radius: 5px;
+}
+
+.btn-agregar{
+    color: rgb(255, 255, 255);
+    background-color: #2E7D32;
+}
+
+.btn-agregar:hover{
+    color: rgb(255, 255, 255);
+    background-color: #184d1b;
+}
+
+.modal-title{
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+.headerModal{
+    background-color: #2E7D32;
 }

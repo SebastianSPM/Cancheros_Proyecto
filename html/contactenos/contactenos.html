@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../Styles/contactenos/contactenos.css">
     <link rel="stylesheet" href="../../Styles/quienes_somos/styleNavbar.css">
+    <link rel="stylesheet" href="../../Styles/contactenos/contactenos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-
     <title>contactenos</title>
 </head>
 
@@ -19,138 +19,243 @@
     <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-1">
-    <div class="container-fluid px-4">
+        <div class="container-fluid px-4">
 
-        <a class="navbar-brand" href="#">
-            <img src="../../imagenes/logo_cancheros.png" 
-                 alt="Cancheros"
-                 class="logo-cancheros">
-        </a>
+            <a class="navbar-brand" href="#">
+                <img src="../../imagenes/logo_cancheros.png" alt="Cancheros" class="logo-cancheros">
+            </a>
 
-        <button class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
 
-            <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
 
-        </button>
+            </button>
 
-        <div class="collapse navbar-collapse justify-content-end" id="menu">
+            <div class="collapse navbar-collapse justify-content-end" id="menu">
 
-            <ul class="navbar-nav align-items-lg-center">
+                <ul class="navbar-nav align-items-lg-center">
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../index.html">Inicio</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Canchas</a>
+                    </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../index.html">Inicio</a>
+                    <a class="nav-link" href="../canchas.html">Canchas</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Canchas</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reservas</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Reservas</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../quienes_somos/quienes_somos_final.html">Nosotros</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../quienes_somos/quienes_somos_final.html">Nosotros</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../contactenos/contactenos.html">Contacto</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="../contactenos/contactenos.html">Contacto</a>
-                </li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#" class="btn login-btn">
+                            Entrar
+                        </a>
+                    </li>
 
-                <li class="nav-item ms-lg-3">
-                    <a href="#" class="btn login-btn">
-                        Entrar
-                    </a>
-                </li>
+                </ul>
 
-            </ul>
+            </div>
 
         </div>
-
-    </div>
-</nav>
+    </nav>
 
     <!-- ================= CONTENIDO ================= -->
 
-    <main class="container my-5">
+    <!-- ================= CONTÁCTANOS ================= -->
 
-        <div class="row justify-content-center">
+    <main class="contacto-section">
 
-            <div class="col-lg-7 col-md-9">
+        <div class="contacto-bg-line line-1"></div>
+        <div class="contacto-bg-line line-2"></div>
 
-                <div class="card shadow border-0 rounded-4">
+        <div class="container">
 
-                    <div class="card-body p-5">
+            <div class="contacto-wrapper">
 
-                        <h2 class="text-center mb-3 titulo-contacto">
-                            Contáctanos
-                        </h2>
+                <!-- PANEL INFORMATIVO -->
+                <section class="contacto-info">
 
-                        <p class="text-center text-muted mb-4">
-                            ¿Tienes alguna duda o deseas comunicarte con nosotros?
-                            Completa el siguiente formulario.
-                        </p>
+                    <div class="cancha-decoration">
+                        <div class="cancha-circle"></div>
+                        <div class="cancha-line"></div>
+                    </div>
 
-                        <form id="formContacto" action="https://formspree.io/f/mnjeeelw" method="POST">
+                    <span class="contacto-badge">
+                        <i class="bi bi-chat-dots-fill"></i>
+                        Estamos para ayudarte
+                    </span>
 
-                            <div class="mb-3">
+                    <h1>
+                        Hablemos de<br>
+                        <span>fútbol.</span>
+                    </h1>
 
-                                <label class="form-label">
-                                    Nombre
-                                </label>
+                    <p class="contacto-description">
+                        ¿Tienes alguna duda, sugerencia o necesitas información
+                        sobre Cancheros? Escríbenos y estaremos encantados de
+                        ayudarte.
+                    </p>
 
-                                <input type="text" id="nombre" name="nombre" class="form-control"
-                                    placeholder="Ingrese su nombre">
+                    <div class="contacto-options">
 
+                        <div class="contacto-option">
+                            <div class="option-icon">
+                                <i class="bi bi-calendar-check"></i>
                             </div>
 
-                            <div class="mb-3">
+                            <div>
+                                <strong>Reservas</strong>
+                                <span>¿Tienes dudas sobre una reserva?</span>
+                            </div>
+                        </div>
 
-                                <label class="form-label">
-                                    Correo electrónico
-                                </label>
-
-                                <input type="email" id="correo" name="correo" class="form-control"
-                                    placeholder="correo@ejemplo.com">
-
+                        <div class="contacto-option">
+                            <div class="option-icon">
+                                <i class="bi bi-dribbble"></i>
                             </div>
 
-                            <div class="mb-3">
+                            <div>
+                                <strong>Canchas</strong>
+                                <span>Encuentra la cancha ideal.</span>
+                            </div>
+                        </div>
 
-                                <label class="form-label">
-                                    Teléfono
-                                </label>
-
-                                <input type="tel" id="telefono" name="telefono" class="form-control"
-                                    placeholder="3001234567">
-
+                        <div class="contacto-option">
+                            <div class="option-icon">
+                                <i class="bi bi-headset"></i>
                             </div>
 
-                            <div class="mb-4">
-
-                                <label class="form-label">
-                                    Mensaje
-                                </label>
-
-                                <textarea id="mensaje" name="mensaje" class="form-control" rows="5"
-                                    placeholder="Escriba su mensaje"></textarea>
-
+                            <div>
+                                <strong>Soporte</strong>
+                                <span>Estamos aquí para ayudarte.</span>
                             </div>
-
-                            <button class="btn btn-success w-100 py-2" type="submit">
-
-                                Enviar mensaje
-
-                            </button>
-
-                        </form>
+                        </div>
 
                     </div>
 
-                </div>
+                    <div class="contacto-ball">
+                        ⚽
+                    </div>
+
+                </section>
+
+
+                <!-- FORMULARIO -->
+                <section class="contacto-form-container">
+
+                    <div class="form-header">
+
+                        <span class="form-number">01</span>
+
+                        <div>
+                            <span class="form-mini-title">CONTACTO</span>
+
+                            <h2>Cuéntanos, ¿en qué podemos ayudarte?</h2>
+
+                            <p>
+                                Completa los siguientes datos y envíanos tu mensaje.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <form id="formContacto" action="https://formspree.io/f/mnjeeelw" method="POST">
+
+                        <div class="form-row">
+
+                            <div class="contact-field">
+
+                                <label for="nombre">
+                                    <i class="bi bi-person"></i>
+                                    Nombre
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="contact-field">
+
+                                <label for="correo">
+                                    <i class="bi bi-envelope"></i>
+                                    Correo electrónico
+                                </label>
+
+                                <div class="input-wrapper">
+
+                                    <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-field">
+
+                            <label for="telefono">
+                                <i class="bi bi-telephone"></i>
+                                Teléfono
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <input type="tel" id="telefono" name="telefono" placeholder="3001234567">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-field">
+
+                            <label for="mensaje">
+                                <i class="bi bi-chat-left-text"></i>
+                                Mensaje
+                            </label>
+
+                            <div class="input-wrapper textarea-wrapper">
+
+                                <textarea id="mensaje" name="mensaje" rows="5"
+                                    placeholder="Escribe aquí tu mensaje..."></textarea>
+
+                                <span class="textarea-decoration"></span>
+
+                            </div>
+
+                        </div>
+
+
+                        <button class="contact-submit" type="submit">
+
+                            <span>Enviar mensaje</span>
+
+                            <i class="bi bi-arrow-up-right"></i>
+
+                        </button>
+
+                    </form>
+
+                </section>
 
             </div>
 
@@ -168,11 +273,7 @@
 
                 <div class="col-12 col-md-6 col-lg-3 text-center text-lg-start ">
 
-                     <img 
-        src="../../imagenes/logo_cancheros.png"
-        alt="Logo Cancheros"
-        class="footer-logo"
-    >
+                    <img src="../../imagenes/logo_cancheros.png" alt="Logo Cancheros" class="footer-logo">
 
                 </div>
 
@@ -186,13 +287,13 @@
 
                         <a href="../../index.html">Inicio</a>
 
-                        <a href="#">Canchas</a>
+                        <a href="../canchas.html">Canchas</a>
 
                         <a href="#">Reservas</a>
 
                         <a href="../quienes_somos/quienes_somos_final.html">Nosotros</a>
 
-                        <a href="./contactenos.html">Contacto</a>
+                        <a href="../contactenos/contactenos.html">Contacto</a>
 
                     </div>
 
@@ -229,7 +330,7 @@
             </div>
 
             <hr class="footer-line my-4">
-         
+
 
             <div class="text-center footer-copy">
 

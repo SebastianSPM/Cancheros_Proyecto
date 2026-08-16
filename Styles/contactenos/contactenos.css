@@ -537,3 +537,806 @@ textarea{
         padding-top: 20px;
     }
 }
+/* =========================================================
+                    CONTACTO - NUEVO DISEÑO
+   ========================================================= */
+
+.contacto-section {
+    position: relative;
+
+    min-height: calc(100vh - 110px);
+
+    padding: 70px 20px;
+
+    overflow: hidden;
+
+    /* Imagen + capa oscura */
+    background:
+        linear-gradient(
+            135deg,
+            rgba(38, 50, 56, 0.88),
+            rgba(38, 50, 56, 0.72)
+        ),
+        url("../../imagenes/contacto-cancha.jpg");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+/* Líneas decorativas del fondo */
+
+.contacto-bg-line {
+    position: absolute;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    pointer-events: none;
+}
+
+.line-1 {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    left: -300px;
+    top: 80px;
+}
+
+.line-2 {
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    right: -400px;
+    bottom: -350px;
+}
+
+
+/* CONTENEDOR PRINCIPAL */
+
+.contacto-wrapper {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 0.85fr 1.15fr;
+
+    width: 100%;
+    max-width: 1150px;
+
+    min-height: 600px;
+
+    margin: auto;
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35),
+        0 8px 25px rgba(0, 0, 0, 0.18);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+
+.contacto-info {
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 55px 45px;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(102, 187, 106, 0.22),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #263238,
+            #1c292e
+        );
+}
+
+
+
+.contacto-info::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: #FBC02D;
+}
+
+
+
+.contacto-badge {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+
+    color: #FBC02D;
+
+    font-size: .82rem;
+    font-weight: 700;
+
+    margin-bottom: 28px;
+}
+
+
+
+.contacto-info h1 {
+
+    position: relative;
+
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+
+    line-height: .95;
+
+    font-weight: 700;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 25px;
+}
+
+.contacto-info h1 span {
+
+    color: #FBC02D;
+
+}
+
+
+
+.contacto-description {
+
+    max-width: 420px;
+
+    color: #CFD8DC;
+
+    font-size: 1rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 38px;
+}
+
+
+/* Opciones */
+
+.contacto-options {
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+.contacto-option {
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    transition: .3s ease;
+}
+
+
+.contacto-option:hover {
+
+    transform: translateX(7px);
+
+}
+
+
+.option-icon {
+
+    min-width: 45px;
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: rgba(251,192,45,.12);
+
+    border: 1px solid rgba(251,192,45,.25);
+
+    color: #FBC02D;
+
+    font-size: 1.15rem;
+}
+
+
+.contacto-option strong {
+
+    display: block;
+
+    color: white;
+
+    font-size: .95rem;
+
+}
+
+
+.contacto-option span {
+
+    display: block;
+
+    color: #90A4AE;
+
+    font-size: .78rem;
+
+    margin-top: 2px;
+}
+
+
+/* Decoración cancha */
+
+.cancha-decoration {
+
+    position: absolute;
+
+    right: -120px;
+    top: 45%;
+
+    width: 330px;
+    height: 330px;
+
+    border: 2px solid rgba(255,255,255,.06);
+
+    transform: translateY(-50%);
+
+}
+
+
+.cancha-circle {
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border: 2px solid rgba(255,255,255,.06);
+
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+
+.cancha-line {
+
+    position: absolute;
+
+    width: 2px;
+    height: 100%;
+
+    background: rgba(255,255,255,.06);
+
+    left: 50%;
+}
+
+
+/* Balón decorativo */
+
+.contacto-ball {
+
+    position: absolute;
+
+    right: 35px;
+    bottom: 25px;
+
+    font-size: 4rem;
+
+    opacity: .08;
+
+    transform: rotate(-15deg);
+
+}
+
+
+/* =========================================================
+                    FORMULARIO
+   ========================================================= */
+
+.contacto-form-container {
+
+    padding: 55px 60px;
+
+    background: rgba(255,255,255,.96);
+
+}
+
+
+/* Header formulario */
+
+.form-header {
+
+    display: flex;
+
+    gap: 18px;
+
+    align-items: flex-start;
+
+    margin-bottom: 35px;
+}
+
+
+.form-number {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 45px;
+    height: 45px;
+
+    border-radius: 12px;
+
+    background: #FBC02D;
+
+    color: #263238;
+
+    font-size: .8rem;
+
+    font-weight: 800;
+}
+
+
+.form-mini-title {
+
+    display: block;
+
+    color: #2E7D32;
+
+    font-size: .75rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 6px;
+}
+
+
+.form-header h2 {
+
+    margin: 0;
+
+    color: #263238;
+
+    font-size: 1.75rem;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+.form-header p {
+
+    margin: 7px 0 0;
+
+    color: #78909C;
+
+    font-size: .9rem;
+}
+
+
+/* Dos columnas */
+
+.form-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* Campo */
+
+.contact-field {
+
+    margin-bottom: 21px;
+}
+
+
+.contact-field label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 8px;
+
+    color: #263238;
+
+    font-size: .85rem;
+
+    font-weight: 700;
+}
+
+
+.contact-field label i {
+
+    color: #2E7D32;
+
+}
+
+
+/* Inputs */
+
+.input-wrapper {
+
+    position: relative;
+}
+
+
+.input-wrapper input,
+.input-wrapper textarea {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1.5px solid #E0E6E8;
+
+    border-radius: 12px;
+
+    background: #F8FAFA;
+
+    color: #263238;
+
+    font-family: 'Source Sans 3', sans-serif;
+
+    font-size: .92rem;
+
+    outline: none;
+
+    transition: all .25s ease;
+}
+
+
+.input-wrapper input {
+
+    height: 50px;
+
+}
+
+
+.input-wrapper textarea {
+
+    min-height: 145px;
+
+    resize: vertical;
+}
+
+
+/* Focus */
+
+.input-wrapper input:focus,
+.input-wrapper textarea:focus {
+
+    border-color: #2E7D32;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(46,125,50,.09);
+
+}
+
+
+/* Placeholder */
+
+.input-wrapper input::placeholder,
+.input-wrapper textarea::placeholder {
+
+    color: #B0BEC5;
+
+}
+
+
+/* Línea inferior */
+
+.input-wrapper::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 16px;
+    right: 16px;
+    bottom: 0;
+
+    height: 2px;
+
+    background: #FBC02D;
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition: transform .3s ease;
+
+}
+
+
+.input-wrapper:focus-within::after {
+
+    transform: scaleX(1);
+
+}
+
+
+/* Textarea */
+
+.textarea-wrapper::after {
+
+    bottom: 4px;
+
+}
+
+
+/* =========================================================
+                    BOTÓN
+   ========================================================= */
+
+.contact-submit {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 15px 18px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: #2E7D32;
+
+    color: white;
+
+    font-family: 'Source Sans 3', sans-serif;
+
+    font-size: .95rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all .3s ease;
+
+}
+
+
+.contact-submit i {
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: #FBC02D;
+
+    color: #263238;
+
+    transition: .3s ease;
+
+}
+
+
+.contact-submit:hover {
+
+    background: #256628;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(46,125,50,.22);
+
+}
+
+
+.contact-submit:hover i {
+
+    transform: rotate(45deg);
+
+}
+
+
+/* =========================================================
+                    RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .contacto-section {
+
+        padding: 60px 20px;
+
+    }
+
+
+    .contacto-wrapper {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .contacto-info {
+
+        padding: 45px 35px;
+
+    }
+
+
+    .contacto-info h1 {
+
+        font-size: 3.4rem;
+
+    }
+
+
+    .contacto-form-container {
+
+        padding: 45px 35px;
+
+    }
+
+
+    .cancha-decoration {
+
+        right: -180px;
+
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .contacto-section {
+
+        padding: 35px 15px;
+
+    }
+
+
+    .contacto-wrapper {
+
+        border-radius: 20px;
+
+    }
+
+
+    .contacto-info {
+
+        padding: 38px 25px;
+
+    }
+
+
+    .contacto-info h1 {
+
+        font-size: 3rem;
+
+    }
+
+
+    .contacto-description {
+
+        font-size: .9rem;
+
+    }
+
+
+    .contacto-form-container {
+
+        padding: 35px 22px;
+
+    }
+
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+
+    }
+
+
+    .form-header h2 {
+
+        font-size: 1.4rem;
+
+    }
+
+
+    .form-number {
+
+        min-width: 38px;
+        height: 38px;
+
+        font-size: .7rem;
+
+    }
+
+}
+/* =========================================================
+                EFECTO DE PROFUNDIDAD
+   ========================================================= */
+
+.contacto-section::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 25%,
+            rgba(0, 0, 0, 0.18) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* La tarjeta queda por encima del fondo */
+
+.contacto-wrapper {
+    z-index: 2;
+}
