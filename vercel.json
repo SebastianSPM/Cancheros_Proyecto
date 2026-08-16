@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/html/reservasadmin.html",
+      "destination": "/html/panelAdmin.html",
       "permanent": false
     }
   ]
