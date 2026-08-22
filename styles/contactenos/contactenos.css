@@ -1340,3 +1340,30 @@ textarea{
 .contacto-wrapper {
     z-index: 2;
 }
+
+/* ==========================================
+   FORZAR TAMAÑO UNIFORME DE LOGO EN FOOTER
+   ========================================== */
+
+.footer-logo {
+    width: 140px !important;
+    max-width: 140px !important;
+    min-width: 140px !important;
+    height: auto !important;
+    display: block !important;
+}
+
+/* Evitar que la columna flex modifique el tamaño en pantallas grandes */
+@media (min-width: 992px) {
+    .footer-moderno .footer-logo {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+}
+
+/* Centrado automático en móviles */
+@media (max-width: 991px) {
+    .footer-moderno .footer-logo {
+        margin: 0 auto !important;
+    }
+}

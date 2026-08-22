@@ -41,7 +41,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../imagenes/fondo_balones.png'); 
+  background-image: url('../../assets/images/fondo_balones.png'); 
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -101,7 +101,7 @@ body {
 
 .hero-title {
   font-family: 'Arial Black', sans-serif;
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: 900;
   letter-spacing: 6px;
   text-transform: uppercase;
@@ -112,7 +112,7 @@ body {
 
 .hero-subtitle {
   font-family: 'Arial Black', sans-serif;
-  font-size: 3.2rem;
+  font-size: 3.0rem;
   font-weight: 900;
   letter-spacing: 12px;
   text-transform: uppercase;
@@ -123,7 +123,7 @@ body {
 
 .hero-description {
   font-family: 'Arial', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.4;
   margin: 0 auto;

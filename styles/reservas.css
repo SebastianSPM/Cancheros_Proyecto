@@ -1,0 +1,335 @@
+:root {
+    --bg-dark: #111827;
+    --card-dark: #1f2937;
+    --accent-yellow: #facc15;
+    --accent-red: #ef4444;
+    --text-light: #f9fafb;
+    --text-muted: #9ca3af;
+}
+
+
+/* ================= BODY ================= */
+
+body {
+    background-color: #f3f4f6;
+    font-family: "Source Sans 3", sans-serif;
+    color: #111827;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background-color: white;
+}
+
+.logo-cancheros {
+    width: 190px;
+    height: auto;
+    display: block;
+     
+    transform-origin: left center; 
+}
+
+.nav-link {
+    font-weight: 600;
+}
+
+.nav-link.active {
+    color: var(--accent-red) !important;
+}
+
+.login-btn {
+    background-color: var(--accent-red);
+    color: white;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 8px;
+}
+
+
+/* ================= TITULO ================= */
+
+.titulo-reserva {
+    font-weight: 800;
+    color: var(--bg-dark);
+}
+
+.texto-reserva {
+    color: #6b7280;
+}
+
+
+/* ================= TARJETA CANCHA ================= */
+
+.card-cancha {
+    background-color: var(--card-dark);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    height: 100%;
+}
+
+.imagen-cancha {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.imagen-cancha img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contenido-cancha {
+    padding: 25px;
+    color: var(--text-light);
+}
+
+.contenido-cancha h2 {
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.ubicacion {
+    color: #d1d5db;
+    margin-bottom: 0;
+}
+
+.ubicacion i {
+    color: var(--accent-red);
+}
+
+.badge-cancha {
+    background-color: var(--accent-yellow);
+    color: #111827;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.contenido-cancha hr {
+    border-color: #374151;
+}
+
+.contenido-cancha h5 {
+    font-weight: 700;
+}
+
+.descripcion {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+
+/* ================= PRECIO ================= */
+
+.precio-cancha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 25px;
+    padding-top: 20px;
+
+    border-top: 1px solid #374151;
+}
+
+.precio-cancha span {
+    color: #9ca3af;
+}
+
+.precio-cancha strong {
+    color: var(--accent-yellow);
+    font-size: 25px;
+}
+
+
+/* ================= FORMULARIO ================= */
+
+.card-reserva {
+    background-color: white;
+    border-radius: 18px;
+    padding: 30px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.card-reserva h3 {
+    font-weight: 800;
+    color: var(--bg-dark);
+}
+
+.card-reserva h3 i {
+    color: var(--accent-red);
+}
+
+.card-reserva label {
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.form-control,
+.form-select {
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.15);
+}
+
+
+/* ================= TOTAL ================= */
+
+.total-reserva {
+    background-color: #f3f4f6;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.total-reserva span {
+    font-weight: 600;
+}
+
+.total-reserva strong {
+    color: var(--accent-red);
+    font-size: 25px;
+}
+
+
+/* ================= BOTON ================= */
+
+.btn-confirmar {
+    background-color: var(--accent-red);
+    color: white;
+
+    font-weight: 700;
+
+    padding: 13px;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.btn-confirmar:hover {
+    background-color: #dc2626;
+    color: white;
+    transform: translateY(-2px);
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer-moderno {
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #1f2937
+    );
+
+    color: white;
+
+    margin-top: 50px;
+
+    padding: 45px 0 25px;
+}
+
+.footer-logo {
+    width: 150px;
+}
+
+.footer-moderno h5 {
+    font-weight: 700;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-nav a {
+    color: #d1d5db;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-yellow);
+}
+
+.social-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-pill {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: #374151;
+
+    color: white;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.social-pill:hover {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+.footer-line {
+    border-color: #374151;
+}
+
+.footer-copy {
+    color: #9ca3af;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .imagen-cancha {
+        height: 220px;
+    }
+
+    .card-reserva {
+        padding: 20px;
+    }
+
+    .contenido-cancha {
+        padding: 20px;
+    }
+
+    .precio-cancha strong {
+        font-size: 21px;
+    }
+
+}

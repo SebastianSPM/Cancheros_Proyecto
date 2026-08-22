@@ -12,7 +12,7 @@
             background-color: var(--bg-dark);
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-bottom: 50px;
+            padding-bottom: 0px;
         }
 
         .filter-box {
@@ -321,4 +321,80 @@
         height: 210px;
     }
 
+}
+:root {
+  --bg-light: #F8F9FA;
+  --primary-green: #2E7D32;
+  --accent-yellow: #FBC02D;
+  --dark-slate: #263238;
+  --secondary-green: #66BB6A;
+  --accent-red: #EF5350;
+  
+  /* Mantenemos tus mapeos existentes adaptados */
+  --bg-dark: var(--dark-slate);
+  --card-bg: #1e282d;
+  --input-bg: #172024;
+  --text-muted: #90a4ae;
+  --border-color: #37474f;
+}
+/* ==========================================
+   MODAL DE DETALLES DE CANCHA
+   ========================================== */
+
+.modal-cancha-content {
+  background-color: var(--dark-slate);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  color: #ffffff;
+}
+
+.galeria-placeholder {
+  background-color: var(--input-bg);
+  border: 2px dashed var(--border-color);
+  height: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detalles-box {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+}
+
+.detalles-box li {
+  border-color: var(--border-color) !important;
+  font-size: 0.9rem;
+}
+
+.icon-check-custom {
+  color: var(--secondary-green);
+}
+
+.btn-carrito-modal {
+  background-color: var(--accent-yellow);
+  color: var(--dark-slate);
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-carrito-modal:hover {
+  background-color: #f5b000;
+  color: #000000;
+}
+/* Ajuste de imágenes para el carrusel del modal */
+#canchaCarousel {
+  min-height: 250px;
+  max-height: 320px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+}
+
+#canchaCarousel img {
+  object-fit: cover;
+  height: 100%;
 }
