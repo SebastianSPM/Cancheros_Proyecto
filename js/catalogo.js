@@ -17,6 +17,8 @@ function cargarCanchasAdmin() {
     
     const contenedor = document.getElementById("containerMain");
     
+    if (!contenedor) return;
+
     todasLasCanchas.forEach(cancha => {
         contenedor.innerHTML += `
             <div class="col-lg-4 col-md-6">
