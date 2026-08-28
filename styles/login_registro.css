@@ -22,7 +22,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html, body { height: 80%; }
 
 body {
   margin: 0;
@@ -201,6 +201,38 @@ body {
   box-shadow: 0 0 0 3px rgba(255, 200, 87, 0.18);
 }
 
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 42px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: var(--ink-faint);
+  cursor: pointer;
+  padding: 0;
+}
+
+.toggle-password:hover { color: var(--ink-soft); }
+
+.toggle-password svg {
+  width: 19px;
+  height: 19px;
+}
+
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -259,14 +291,33 @@ body {
 
 .switch-line { text-align: center; font-size: 14px; color: var(--ink-soft); }
 
+.check-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+}
+
+.highlight { color: var(--ink); }
+
 @media (max-width: 860px) {
   .layout { grid-template-columns: 1fr; }
-  .pitch { min-height: 260px; padding: 32px; }
+  .pitch { min-height: 160px; padding: 32px; }
   .pitch-center .clock { font-size: 56px; }
   .pitch-copy { display: none; }
-  .form-side { padding: 40px 24px; }
+  .form-side { padding: 30px 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
+}
+
+.btnTerminos{
+  color: #fff;
+  background-color: none;
+  border: none;
+  background: none;
+  
+}
+.btnTerminos:hover{
+  text-decoration: underline;
 }

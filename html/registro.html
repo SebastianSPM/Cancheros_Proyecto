@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro · Cancha Lista</title>
+  <link rel="stylesheet" href="./../styles/login_registro.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+  <div class="layout">
+
+    <section class="pitch">
+      <div class="pitch-brand">
+        <span class="dot"></span>
+        <span>Cancha Lista</span>
+      </div>
+
+      <div class="pitch-center">
+        <div class="clock">90'
+          <small>Únete antes del pitido final</small>
+        </div>
+      </div>
+
+      <p class="pitch-copy">
+        Crea tu cuenta y empieza a reservar canchas sintéticas
+        <strong>de forma justa, sin favoritismos.</strong>
+      </p>
+
+      <svg class="pitch-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="70" stroke="#f2f0e9" stroke-width="1.5"/>
+        <circle cx="100" cy="100" r="3" fill="#f2f0e9"/>
+        <line x1="100" y1="0" x2="100" y2="200" stroke="#f2f0e9" stroke-width="1"/>
+      </svg>
+    </section>
+
+    <section class="form-side">
+      <div class="form-card">
+        <p class="eyebrow">Únete a la cancha</p>
+        <h1>Crea tu cuenta</h1>
+        <p class="subtitle">Regístrate para reservar horarios y gestionar tus turnos.</p>
+
+        <form>
+          <div class="field-row">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" placeholder="Juan">
+            </div>
+            <div class="field">
+              <label for="apellido">Apellido</label>
+              <input type="text" id="apellido" placeholder="Pérez">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" placeholder="tucorreo@ejemplo.com">
+          </div>
+
+          <div class="field">
+            <label for="telefono">Número de celular</label>
+            <input type="tel" id="telefono" placeholder="300 000 0000">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="password">Contraseña</label>
+              <div class="password-wrapper">
+                <input type="password" id="password" placeholder="••••••••">
+                <button type="button" class="toggle-password" data-target="password" aria-label="Mostrar contraseña">
+                  <svg class="icon-eye" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+                  </svg>
+                  <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                    <path d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.24 4.24M9.88 5.09A10.9 10.9 0 0 1 12 5c7 0 11 7 11 7a13.2 13.2 0 0 1-3.16 3.9M6.6 6.6C3.9 8.3 2 11 2 11s4 7 11 7a10.7 10.7 0 0 0 4.24-.87" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="password2">Confirmar contraseña</label>
+              <div class="password-wrapper">
+                <input type="password" id="password2" placeholder="">
+                <button type="button" class="toggle-password" data-target="password2" aria-label="Mostrar contraseña">
+                  <svg class="icon-eye" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+                  </svg>
+                  <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+                    <path d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.24 4.24M9.88 5.09A10.9 10.9 0 0 1 12 5c7 0 11 7 11 7a13.2 13.2 0 0 1-3.16 3.9M6.6 6.6C3.9 8.3 2 11 2 11s4 7 11 7a10.7 10.7 0 0 0 4.24-.87" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-meta">
+            <label class="checkbox">
+              <input type="checkbox" id="terminos">
+                <button type="button" class="btnTerminos" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Acepto los términos y condiciones
+                </button>
+            </label>
+          </div>
+
+          <button type="button" class="btn-primary">Crear cuenta</button>
+        </form>
+
+        <div class="divider">o</div>
+
+        <p class="switch-line">
+          ¿Ya tienes cuenta? <a href="./inicio-sesion.html" class="link">Inicia sesión</a>
+        </p>
+      </div>
+    </section>
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Términos y Condiciones</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Última actualización: 27 de agosto de 2026</p>
+
+            <p>Lee atentamente estos términos y condiciones antes de utilizar nuestro servicio.</p>
+            <h2>Interpretación y definiciones</h2>
+            <h3>Interpretación</h3>
+            <p>Las palabras cuyas letras iniciales están en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.</p>
+            <h3>Definiciones</h3>
+            <p>Para los efectos de estos Términos y Condiciones:</p>
+            <ul>
+              <li>
+                <p><strong>Afiliado</strong> significa una entidad que controla, es controlada por o está bajo control común con una de las partes, donde "control" significa la propiedad del 50 % o más de las acciones, participación accionaria u otros valores con derecho a voto para la elección de directores u otra autoridad administrativa.</p>
+              </li>
+
+              <li>
+                <p><strong>País/Estado</strong> se refiere a: Colombia.</p>
+              </li>
+              <li>
+                <p><strong>Empresa</strong> (denominada como "la Empresa", "Nosotros", "Nos" o "Nuestro" en estos Términos y Condiciones) se refiere a cancheros.</p>
+              </li>
+              <li>
+                <p><strong>Dispositivo</strong> significa cualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono celular o una tableta digital.</p>
+              </li>
+              <li>
+                <p><strong>Servicio</strong> se refiere al Sitio web.</p>
+              </li>
+              <li>
+                <p><strong>Términos y Condiciones</strong> (también denominados "Términos") significa estos Términos y Condiciones, incluidos todos los documentos expresamente incorporados mediante referencia, que regulan tu acceso y uso del Servicio y constituyen el acuerdo completo entre tú y la Empresa con respecto al Servicio. Estos Términos y Condiciones han sido creados con la ayuda del <a href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank">Generador de Términos y Condiciones</a>.</p>
+              </li>
+              <li>
+                <p><strong>Servicio de Redes Sociales de Terceros</strong> significa cualquier servicio o contenido (incluidos datos, información, productos o servicios) proporcionado por un tercero que se muestre, incluya, ponga a disposición o se encuentre vinculado a través del Servicio.</p>
+              </li>
+
+              <li>
+                <p><strong>Sitio web</strong> se refiere a cancheros, accesible desde <a href="http://cancheros" rel="external nofollow noopener" target="_blank">http://cancheros</a>.</p>
+              </li>
+              <li>
+                <p><strong>Tú</strong> significa la persona que accede o utiliza el Servicio, o la empresa u otra entidad legal en cuyo nombre dicha persona accede o utiliza el Servicio, según corresponda.</p>
+              </li>
+            </ul>
+            <h2>Aceptación</h2>
+            <p>Estos son los Términos y Condiciones que regulan el uso de este Servicio y el acuerdo entre tú y la Empresa. Estos Términos y Condiciones establecen los derechos y obligaciones de todos los usuarios con respecto al uso del Servicio.</p>
+            <p>Tu acceso y uso del Servicio están condicionados a tu aceptación y cumplimiento de estos Términos y Condiciones. Estos Términos y Condiciones se aplican a todos los visitantes, usuarios y demás personas que accedan o utilicen el Servicio.</p>
+            <p>Al acceder o utilizar el Servicio, aceptas estar sujeto a estos Términos y Condiciones. Si no estás de acuerdo con alguna parte de estos Términos y Condiciones, no podrás acceder al Servicio.</p>
+            <p>Declaras que eres mayor de 18 años. La Empresa no permite que personas menores de 18 años utilicen el Servicio.</p>
+            <p>Tu acceso y uso del Servicio también están sujetos a nuestra Política de Privacidad, que describe cómo recopilamos, utilizamos y divulgamos información personal. Lee atentamente nuestra Política de Privacidad antes de utilizar nuestro Servicio.</p>
+            <h2>Enlaces a otros sitios web</h2>
+            <p>Nuestro Servicio puede contener enlaces a sitios web o servicios de terceros que no son propiedad ni están bajo el control de la Empresa.</p>
+            <p>La Empresa no tiene control sobre el contenido, las políticas de privacidad o las prácticas de los sitios web o servicios de terceros y no asume ninguna responsabilidad por ellos. Asimismo, reconoces y aceptas que la Empresa no será responsable, directa ni indirectamente, por ningún daño o pérdida causada o presuntamente causada por el uso o la confianza depositada en cualquiera de dichos contenidos, bienes o servicios disponibles en dichos sitios web o servicios o a través de ellos.</p>
+            <p>Te recomendamos encarecidamente leer los términos y condiciones y las políticas de privacidad de cualquier sitio web de terceros que visites.</p>
+            <h3>Enlaces desde un servicio de redes sociales de terceros</h3>
+            <p>El Servicio puede mostrar, incluir, poner a disposición o enlazar contenido o servicios proporcionados por un Servicio de Redes Sociales de Terceros. Un Servicio de Redes Sociales de Terceros no es propiedad ni está bajo el control de la Empresa, y la Empresa no respalda ni asume responsabilidad por ningún Servicio de Redes Sociales de Terceros.</p>
+            <p>Reconoces y aceptas que la Empresa no será responsable, directa ni indirectamente, por ningún daño o pérdida causada o presuntamente causada por tu acceso o uso de cualquier Servicio de Redes Sociales de Terceros, incluido cualquier contenido, bienes o servicios disponibles a través de ellos. El uso que hagas de cualquier Servicio de Redes Sociales de Terceros se regirá por sus propios términos y políticas de privacidad.</p>
+            <h2>Terminación</h2>
+            <p>Podemos cancelar o suspender tu acceso inmediatamente, sin previo aviso ni responsabilidad, por cualquier motivo, incluyendo, entre otros, si incumples estos Términos y Condiciones.</p>
+            <p>Tras la terminación, tu derecho a utilizar el Servicio cesará inmediatamente.</p>
+            <h2>Limitación de responsabilidad</h2>
+            <p>Sin perjuicio de los daños que puedas sufrir, la responsabilidad total de la Empresa y de cualquiera de sus proveedores, en virtud de cualquier disposición de estos Términos, así como tu único recurso respecto de todo lo anterior, se limitará al importe que hayas pagado efectivamente a través del Servicio o a 100 USD si no has adquirido nada a través del Servicio.</p>
+            <p>En la máxima medida permitida por la legislación aplicable, en ningún caso la Empresa ni sus proveedores serán responsables de ningún daño especial, incidental, indirecto o consecuente de cualquier tipo, incluidos, entre otros, daños por pérdida de beneficios, pérdida de datos u otra información, interrupción del negocio, lesiones personales o pérdida de privacidad que surjan de o estén relacionados de cualquier manera con el uso o la imposibilidad de utilizar el Servicio, el software de terceros o el hardware de terceros utilizado con el Servicio, o que estén relacionados de cualquier otra forma con cualquier disposición de estos Términos, incluso si la Empresa o alguno de sus proveedores ha sido informado de la posibilidad de dichos daños y aunque el recurso no cumpla con su propósito esencial.</p>
+            <p>Algunos estados no permiten la exclusión de garantías implícitas o la limitación de responsabilidad por daños incidentales o consecuentes, por lo que algunas de las limitaciones anteriores pueden no aplicarse. En estos estados, la responsabilidad de cada parte se limitará en la máxima medida permitida por la ley.</p>
+            <h2>Descargo de responsabilidad "TAL CUAL" y "SEGÚN DISPONIBILIDAD"</h2>
+            <p>El Servicio se proporciona "TAL CUAL" y "SEGÚN DISPONIBILIDAD", con todas sus fallas y defectos, sin garantía de ningún tipo. En la máxima medida permitida por la legislación aplicable, la Empresa, en su propio nombre y en nombre de sus Afiliados y de sus respectivos licenciantes y proveedores de servicios, renuncia expresamente a todas las garantías, ya sean expresas, implícitas, legales o de otro tipo, con respecto al Servicio, incluidas todas las garantías implícitas de comerciabilidad, idoneidad para un propósito particular, titularidad y ausencia de infracción, así como las garantías que puedan surgir de prácticas comerciales, ejecución, uso o costumbre comercial.</p>
+            <p>Sin limitar lo anterior, la Empresa no garantiza ni asegura, ni realiza ninguna declaración de ningún tipo, que el Servicio cumplirá con tus requisitos, alcanzará los resultados previstos, será compatible o funcionará con cualquier otro software, aplicación, sistema o servicio, funcionará sin interrupciones, cumplirá con estándares de rendimiento o confiabilidad, estará libre de errores o que cualquier error o defecto pueda o vaya a ser corregido.</p>
+            <p>Sin limitar lo anterior, ni la Empresa ni ninguno de los proveedores de la Empresa realiza ninguna declaración o garantía, expresa o implícita, de ningún tipo: (i) con respecto al funcionamiento o disponibilidad del Servicio, o de la información, contenido, materiales o productos incluidos en él; (ii) de que el Servicio funcionará sin interrupciones o estará libre de errores; (iii) con respecto a la exactitud, confiabilidad o actualidad de cualquier información o contenido proporcionado a través del Servicio; o (iv) de que el Servicio, sus servidores, el contenido o los correos electrónicos enviados por la Empresa o en su nombre están libres de virus, scripts, troyanos, gusanos, malware, bombas de tiempo u otros componentes dañinos.</p>
+            <p>Algunas jurisdicciones no permiten la exclusión de ciertos tipos de garantías o limitaciones de los derechos legales aplicables de los consumidores, por lo que algunas o todas las exclusiones y limitaciones anteriores pueden no aplicarse a ti. Sin embargo, en tal caso, las exclusiones y limitaciones establecidas en esta sección se aplicarán en la máxima medida permitida por la legislación aplicable.</p>
+            <h2>Ley aplicable</h2>
+            <p>Las leyes del País/Estado, excluyendo sus normas sobre conflictos de leyes, regirán estos Términos y tu uso del Servicio. El uso de la Aplicación también puede estar sujeto a otras leyes locales, estatales, nacionales o internacionales.</p>
+            <h2>Resolución de conflictos</h2>
+            <p>Si tienes alguna inquietud o disputa relacionada con el Servicio, aceptas intentar primero resolverla de manera informal contactando a la Empresa.</p>
+            <h2>Para usuarios de la Unión Europea (UE)</h2>
+            <p>Si eres un consumidor de la Unión Europea, podrás beneficiarte de cualquier disposición obligatoria de la legislación del país en el que resides.</p>
+            <h2>Cumplimiento legal de los Estados Unidos</h2>
+            <p>Declaras y garantizas que (i) no te encuentras en un país sujeto al embargo del gobierno de los Estados Unidos ni en un país que haya sido designado por el gobierno de los Estados Unidos como un país que "apoya el terrorismo", y (ii) no apareces en ninguna lista del gobierno de los Estados Unidos de personas o entidades prohibidas o restringidas.</p>
+            <h2>Divisibilidad y renuncia</h2>
+            <h3>Divisibilidad</h3>
+            <p>Si alguna disposición de estos Términos se considera inaplicable o inválida, dicha disposición será modificada e interpretada para cumplir los objetivos de la misma en la máxima medida posible conforme a la legislación aplicable, y las disposiciones restantes continuarán en pleno vigor y efecto.</p>
+            <h3>Renuncia</h3>
+            <p>Salvo que se establezca lo contrario en el presente documento, el hecho de no ejercer un derecho o exigir el cumplimiento de una obligación en virtud de estos Términos no afectará la capacidad de una parte para ejercer dicho derecho o exigir dicho cumplimiento en cualquier momento posterior, ni la renuncia a un incumplimiento constituirá una renuncia a cualquier incumplimiento posterior.</p>
+            <h2>Interpretación de la traducción</h2>
+            <p>Estos Términos y Condiciones pueden haber sido traducidos si los hemos puesto a tu disposición en nuestro Servicio.</p>
+            <p>Aceptas que el texto original en inglés prevalecerá en caso de disputa.</p>
+            <h2>Cambios en estos Términos y Condiciones</h2>
+            <p>Nos reservamos el derecho, a nuestra exclusiva discreción, de modificar o reemplazar estos Términos en cualquier momento. Si una revisión es sustancial, haremos esfuerzos razonables para proporcionar un aviso de al menos 30 días antes de que los nuevos términos entren en vigor. Lo que constituye un cambio sustancial será determinado a nuestra exclusiva discreción.</p>
+            <p>Al continuar accediendo o utilizando nuestro Servicio después de que dichas revisiones entren en vigor, aceptas estar sujeto a los términos revisados. Si no estás de acuerdo con los nuevos términos, total o parcialmente, deja de utilizar el Servicio.</p>
+            <h2>Contáctanos</h2>
+            <p>Si tienes alguna pregunta sobre estos Términos y Condiciones, puedes contactarnos:</p>
+            <ul>
+              <li>Por teléfono: 6095310</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="./../js/registro.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

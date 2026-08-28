@@ -137,7 +137,7 @@ body{
 
     width:0;
 
-    height:3px;
+    height:2px;
 
     background:var(--amarillo);
 
@@ -375,7 +375,7 @@ body{
 
 /*logo cancheros navbar*/
 .logo-cancheros {
-    width: 190px;
+    width: 140px;
     height: auto;
     display: block;
      

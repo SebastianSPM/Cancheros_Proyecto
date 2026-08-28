@@ -12,14 +12,16 @@ const todasLasCanchas = [
     ...canchasGuardadasConId
 ];
 
-
 function cargarCanchasAdmin() {
-    
+    let contador = 0;
     const contenedor = document.getElementById("containerMain");
     
     if (!contenedor) return;
 
     todasLasCanchas.forEach(cancha => {
+        contador = contador + 1
+        document.getElementById("conteo").textContent = `Mostrando ${contador} resultados`
+        
         contenedor.innerHTML += `
             <div class="col-lg-4 col-md-6">
                 <div class="cancha-card">

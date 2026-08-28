@@ -41,7 +41,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/images/fondo_balones.png'); 
+  background-image: url('../assets/images/fondo_balones.jpg'); 
   background-size: cover;
   background-position: center;
   z-index: 1;
@@ -227,7 +227,7 @@ body {
       rgba(102, 187, 106, 0.70) 60%,   
       rgba(38, 50, 56, 0.85) 100%      
     ),
-    url('../../imagenes/cancha_ejemplo4.png') no-repeat center center / cover;
+    url('../assets/images/canchas/cancha8.jpg') no-repeat center center / cover;
   box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
 }
 

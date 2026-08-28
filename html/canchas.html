@@ -1,6 +1,5 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,14 +10,12 @@
   <link rel="stylesheet" href="../styles/styleNavbar.css" />
   <link rel="stylesheet" href="../styles/canchas.css" />
 </head>
-
 <body>
   <!-- NAVBAR -->
-
-  <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-1">
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2">
     <div class="container-fluid px-4">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/cancheros_letra.png" alt="Cancheros" class="logo-cancheros" />
+        <img src="../assets/images/logos/cancheros_letra.jpg" alt="Cancheros" class="logo-cancheros" />
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -37,10 +34,10 @@
             <a class="nav-link" href="#">Reservas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./quienes_somos/quienes_somos_final.html">Nosotros</a>
+            <a class="nav-link" href="./quienes_somos.html">Nosotros</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./contactenos/contactenos.html">Contacto</a>
+            <a class="nav-link" href="./contactenos.html">Contacto</a>
           </li>
           <li class="nav-item ms-lg-3">
             <a href="#" class="btn login-btn"> Entrar </a>
@@ -54,7 +51,7 @@
   <div class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h3 class="fw-bold m-0">LISTOS PAL' CONTEJO</h3>
-      <span class="text-muted">Mostrando 10 resultados</span>
+      <span id="conteo" class="conteo"></span>
     </div>
 
     <div id="containerMain" class="row g-4">
@@ -66,7 +63,7 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-12 col-md-6 col-lg-3 text-center text-lg-start">
-          <img src="../assets/images/logo_cancheros.png" alt="Logo Cancheros" class="footer-logo" />
+          <img src="../assets/images/logos/logo_cancheros.png" alt="Logo Cancheros" class="footer-logo" />
         </div>
 
         <div class="col-12 col-md-12 col-lg-6 text-center">
@@ -79,9 +76,9 @@
 
             <a href="#">Reservas</a>
 
-            <a href="./quienes_somos/quienes_somos_final.html">Nosotros</a>
+            <a href="./quienes_somos.html">Nosotros</a>
 
-            <a href="./contactenos/contactenos.html">Contacto</a>
+            <a href="./contactenos.html">Contacto</a>
           </div>
         </div>
 
@@ -132,15 +129,15 @@
               <div id="canchaCarousel" class="carousel slide w-100 rounded overflow-hidden" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
                   <div class="carousel-item active h-100">
-                    <img id="modalImagen" src="../assets/images/cancha_ejemplo1.png" class="d-block w-100 h-100 object-fit-cover"
+                    <img id="modalImagen" src="../assets/images/canchas/cancha_ejemplo1.jpg" class="d-block w-100 h-100 object-fit-cover"
                       alt="Foto Cancha 1">
                   </div>
                   <div class="carousel-item h-100">
-                    <img src="../assets/images/cancha_ejemplo2.png" class="d-block w-100 h-100 object-fit-cover"
+                    <img src="../assets/images/canchas/cancha_ejemplo2.jpg" class="d-block w-100 h-100 object-fit-cover"
                       alt="Foto Cancha 2">
                   </div>
                   <div class="carousel-item h-100">
-                    <img src="../assets/images/cancha_ejemplo3.png" class="d-block w-100 h-100 object-fit-cover"
+                    <img src="../assets/images/canchas/cancha_ejemplo3.jpg" class="d-block w-100 h-100 object-fit-cover"
                       alt="Foto Cancha 3">
                   </div>
                 </div>

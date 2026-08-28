@@ -63,7 +63,7 @@ body {
             rgba(27, 94, 32, 0.82),
             rgba(46, 125, 50, 0.78)
         ),
-        url("../../imagenes/cancha.png") center center / cover no-repeat;
+        url("../../assets/images/canchas/cancha.jpg") center center / cover no-repeat;
 
     overflow: hidden;
 }
