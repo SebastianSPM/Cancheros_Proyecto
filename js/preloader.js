@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
 
                     preloader.classList.add("hidden");
+                    window.location.href = "../index.html";
 
                 }, 500);
 
@@ -196,17 +197,17 @@ document.addEventListener("DOMContentLoaded", () => {
        TECLA ESPACIO
        ========================================= */
 
-    window.addEventListener("keydown", (e) => {
+    window.addEventListener("keydown", async (e) => {
 
         if (e.code === "Space") {
 
             e.preventDefault();
 
-            advanceProgress();
+            await advanceProgress();
 
         }
 
-    });
+    })
 
 
     /* =========================================

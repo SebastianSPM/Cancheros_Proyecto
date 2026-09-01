@@ -1,3 +1,4 @@
+//Datos estáticos para rellenar canchas
 const canchasEstaticas = [
     {
         id: 1,

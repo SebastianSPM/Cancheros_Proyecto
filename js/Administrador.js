@@ -1,10 +1,34 @@
 
+const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
 const formCancha = document.getElementById("formCancha");
 const tablaCanchas = document.getElementById("tablaCanchas");
+const salirbtn = document.getElementById("salirbtn");
+const agregarCanchaBtn = document.getElementById("agregarCancha")
 
+salirbtn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn")
+    window.location.href = "./inicio-sesion.html"
+})
+
+//Válidar si el usuario esta activo
+if(!isLoggedIn){
+    window.location.href = "./inicio-sesion.html"
+}
+
+//Si intentan regresar a una pestaña anterior sin estar logueado lo devuelve al inicio sesión
+window.addEventListener("pageshow", (event) => {
+
+    if (event.persisted) {
+        window.location.reload();
+    }
+
+});
+
+//Se obtienen las canchas creadas por el administrador
 const obtenerCanchas = () => {
     return JSON.parse(localStorage.getItem("canchas")) || [];
 };
+
 
 const agregarCancha = async (nombreCancha, precio, disponible, imagenCancha, ubicacion, descripcion, cerrarVentana, mensajeSinCanchas) => {
     const canchas = obtenerCanchas();
@@ -38,6 +62,7 @@ const guardarCanchas = (canchas) => {
     localStorage.setItem("canchas", JSON.stringify(canchas));
 };
 
+//Si no hay canchas se muestra mensaje
 const mostrarMensajeSinCancha = () => {
     tablaCanchas.innerHTML = `
         <tr id="sinCanchas">
@@ -81,6 +106,7 @@ const renderizar = () => {
 
 const eliminarCancha = (id) => {
 
+    //Eliminar cancha dese json aún no es con base de datos
     Swal.fire({
         title: "¿Eliminar cancha?",
         text: "Esta acción no se puede deshacer.",
@@ -111,6 +137,7 @@ const eliminarCancha = (id) => {
     });
 };
 
+//Renderizar las canchas desde que recarga la página
 document.addEventListener("DOMContentLoaded", () => {
     renderizar();
 });
@@ -128,6 +155,7 @@ tablaCanchas.addEventListener("click", (event) => {
     eliminarCancha(id);
 });
 
+//Validaciones para que el usuario no coloque datos incorrectos o vacíos
 const validarFormulario = (nombreCancha, precio, disponible, imagenCancha, ubicacion, descripcion) => {
     
     if(!validarNombreCancha(nombreCancha)){
@@ -254,6 +282,9 @@ formCancha.addEventListener("submit", async (event) => {
     const cerrarVentana = document.getElementById("cerrarVentana");
     const sinCanchas = document.getElementById("sinCanchas");
     const modal = document.getElementById("agregarCancha");
+
+
+    
     
     if(!validarFormulario(nombreCancha, precio, disponible, imagenCancha, ubicacion, descripcion, cerrarVentana)){
         return;
@@ -277,3 +308,4 @@ formCancha.addEventListener("submit", async (event) => {
         icon: "success"
     });
 })
+

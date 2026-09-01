@@ -9,15 +9,30 @@
     <link rel="stylesheet" href="../styles/panelAdmin.css">
 </head>
 <body>
-    <main class="container-fluid py-4">
-        <div class="d-flex justify-content-end align-items-center mb-3">
-            <div class="icono-administrador me-2">
-                <i class="bi bi-person-fill"></i>
+    <nav class="container-fluid py-3">
+    
+        <div class="d-flex justify-content-between align-items-center">
+
+            <div class="d-flex align-items-center">
+                
+                <div class="icono-administrador me-2 mx-2">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+
+                <span class="fw-semibold">
+                    Administrador
+                </span>
+
             </div>
-            <span class="fw-semibold">
-                Administrador
-            </span>
+
+            <button type="button" id="salirbtn" class="btn btn-danger mx-3">
+                Salir
+            </button>
+
         </div>
+
+    </nav>
+    <main class="container-fluid py-4">
         <section class="container py-4">
             <div class="text-center mb-4">
                 <h2 class="fw-bold">Canchas registradas</h2>
@@ -25,7 +40,7 @@
                     Consulta y administra las canchas.
                 </p>
 
-                <button class="btn btn-agregar-cancha d-inline-flex align-items-center mt-5 mb-2" data-bs-toggle="modal" data-bs-target="#agregarCancha">
+                <button id="agregarCancha" class="btn btn-agregar-cancha d-inline-flex align-items-center mt-5 mb-2" data-bs-toggle="modal" data-bs-target="#agregarCancha">
                     <i class="bi bi-plus-circle me-3"></i>Agregar cancha
                 </button>
             </div>
@@ -69,12 +84,12 @@
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="" >Nombre de la cancha:</label>
-                                <input id="nombreCancha" type="text" class="col-md-10 bg-light border p-2 mt-3" minlength="3" maxlength="100">
+                                <input id="nombreCancha" type="text" class="col-md-10 bg-light border p-2 mt-3" minlength="3" maxlength="100" placeholder="Cancheros">
                             </div>
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="">Precio:</label>
-                                <input id="precio" type="number" class="col-md-10 bg-light border p-2 mt-3" min="0">
+                                <input id="precio" type="number" class="col-md-10 bg-light border p-2 mt-3" min="0" placeholder="29000">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -109,12 +124,12 @@
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="" >Ubicación:</label>
-                                <input id="ubicacion" type="text" class="col-md-10 bg-light border p-2 mt-3">
+                                <input id="ubicacion" type="text" class="col-md-10 bg-light border p-2 mt-3" placeholder="Carrera 58">
                             </div>
     
                             <div class="col-md-6 d-flex flex-column">
                                 <label for="">Descripción:</label>
-                                <textarea id="descripcion" class="form-control col-md-10 bg-light border p-2 mt-3" rows="4" maxlength="300"></textarea>
+                                <textarea id="descripcion" class="form-control col-md-10 bg-light border p-2 mt-3" rows="4" maxlength="300" placeholder="Hermosa casa sintetica"></textarea>
                             </div>
                         </div>
                     </div>
@@ -127,7 +142,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script type="module" src="./../js/scriptAdmin.js"></script>
+    <script type="module" src="./../js/Administrador.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

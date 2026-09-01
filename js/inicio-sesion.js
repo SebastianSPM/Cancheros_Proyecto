@@ -1,3 +1,7 @@
+const correoAdmin = "admin@dominio.com";
+const claveAdmin = "admin123456#";
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.querySelector("form");
   const emailInput = document.getElementById("email");
@@ -62,6 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    if(correoAdmin == email && claveAdmin == password){
+      window.location.href = "./panel-administrador.html";
+      localStorage.setItem("isLoggedIn", "true");
+      return;
+    }
+
     // Obtener la lista guardada en el registro
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -95,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
         icon: "good",
         title: "¡Que bien!",
         text: "¡Inicio de sesión exitoso!",
-      });
+    });
 
     // Redirigir al inicio del sitio
-    window.location.href = "../index.html";
+    window.location.href = "./canchas.html";
   });
 });

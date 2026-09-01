@@ -1,0 +1,321 @@
+*{
+    margin: 0;         /*el margin es el espacio fuera de la credencial, elimina margenes automaticos del navegador*/
+    padding: 0;         /* elimina espacios automaticos internos*/
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.90),
+        rgba(255, 255, 255, 0.30)
+    ),
+    url("../assets/images/canchas/futbol5.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+.perfil-container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding-top: 45px;
+    padding-bottom: 50px;
+}
+
+.titulo-perfil {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111111;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.foto-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;  /*convierte el cuadrado en circulo*/
+    overflow: hidden;  /*evita que la foto se salga del círculo*/
+    margin: 0 auto;   /*centra la imagen */
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #2E7D32;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    margin-bottom: 12px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*hace que la imagen llene el círculo sin deformarse */
+    border-radius: 50%;  /*convierte el cuadrado en circulo*/
+}
+
+.editar-foto {
+    background-color: #FBC02D;
+    color: #2E7D32;
+    border: 1px solid #FBC02D;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.editar-foto:hover {
+    background-color: white;
+    color: #2E7D32;
+    border-color: #2E7D32;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.datos-personales {
+    background-color: white;
+    border: 1px solid #2E7D32;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(100, 50, 5, 0.12);
+    margin-bottom: 30px;
+}
+
+.datos-personales h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 15px;
+}
+
+.datos-personales p {
+    font-size: 14px;
+    color: #555555;
+    margin: 6px 0;
+}
+
+.datos-personales strong {
+    color: #111111;
+}
+
+.editar-datos {
+    background-color: #2E7D32;
+    color: white;
+    border: 1px solid #2E7D32;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.editar-datos:hover {
+    background-color: #184d1b;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.historial-reservas {
+    background-color: white;
+    border: 1px solid #2E7D32;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(100, 50, 5, 0.12);
+    margin-bottom: 30px;
+}
+
+.historial-reservas h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111111;
+    text-align: center;
+    padding: 20px 15px 10px;
+    margin: 0;
+}
+
+.tabla-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-reservas {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.tabla-reservas th {
+    background-color: #2E7D32;
+    color: white;
+    text-align: center;
+    padding: 12px 10px;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.tabla-reservas th:last-child {
+    border-right: none;
+}
+
+.tabla-reservas td {
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: center;
+    color: #555555;
+}
+
+.tabla-reservas td:last-child {
+    border-right: none;
+}
+
+.estado {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.estado-reservado {
+    background-color: #2196F3;
+    color: white;
+}
+
+.estado-asistido {
+    background-color: #2E7D32;
+    color: white;
+}
+
+.estado-no-asistio {
+    background-color: #EF5350;
+    color: white;
+}
+
+.botones-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.btn-perfil {
+    width: 200px;
+    background-color: #2E7D32;
+    color: white;
+    border: 1px solid #2E7D32;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-perfil:hover {
+    background-color: #184d1b;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.footer-cancheros {
+    background-color: #263238;
+    color: white;
+    margin-top: 40px;
+    padding: 25px 40px 15px;
+}
+
+.footer-contenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.footer-marca {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-marca strong {
+    font-size: 16px;
+}
+
+.footer-marca span {
+    font-size: 13px;
+    color: #d0d0d0;
+}
+
+.footer-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-seccion strong {
+    font-size: 12px;
+}
+
+.footer-enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-enlaces a {
+    color: #d0d0d0;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer-enlaces a:hover {
+    color: #FBC02D;
+}
+
+.footer-copy {
+    border-top: 1px solid #455A64;
+    margin-top: 20px;
+    padding-top: 12px;
+    text-align: center;
+    font-size: 11px;
+    color: #bdbdbd;
+}
+
+@media (max-width: 768px) {   /*el responsive*/
+    .perfil-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .footer-contenido {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-enlaces {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .tabla-reservas {
+        min-width: 650px;
+    }
+}
+
+.tabla-responsive {
+    width: 100%;
+    overflow-x: auto;
+}

@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Limpiar formulario y redirigir
     form.reset();
-    window.location.href = "login.html";
+    window.location.href = "inicio-sesion.html";
   });
 
   // Mostrar/ocultar contraseña
