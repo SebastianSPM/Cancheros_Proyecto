@@ -13,7 +13,7 @@
 <body>
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2">
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-4 mx-5">
       <a class="navbar-brand" href="#">
         <img src="../assets/images/logos/cancheros_letra.jpg" alt="Cancheros" class="logo-cancheros" />
       </a>
@@ -37,12 +37,22 @@
             <a class="nav-link" href="./contactenos.html">Contacto</a>
           </li>
           <li class="nav-item ms-lg-3">
-            <a href="#" class="btn login-btn"> Entrar </a>
+            <div class="dropdown">
+                <a class="userDropdown dropdown-toggle btn btn-warning" data-bs-toggle="dropdown" autocomplete="off">
+                  Entrar
+                </a>
+
+                <ul class="userMenu dropdown-menu">
+                    <li><a class="dropdown-item" href="./inicio-sesion.html">Iniciar sesión</a></li>
+                    <li><a class="dropdown-item" href="./registro.html">Registrarse</a></li>
+                </ul>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
 
   <!--Contenido-->
   <div class="container my-4">
@@ -60,7 +70,9 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-12 col-md-6 col-lg-3 text-center text-lg-start">
-          <img src="../assets/images/logos/logo_cancheros.png" alt="Logo Cancheros" class="footer-logo" />
+          <a href="#">
+            <img src="../assets/images/logos/logo_cancheros.png" alt="Logo Cancheros" class="footer-logo" />
+          </a>
         </div>
 
         <div class="col-12 col-md-12 col-lg-6 text-center">
@@ -202,8 +214,8 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script type="module" src="./../js/catalogo.js"></script>
   <script src="../js/navbar.js"></script>
+  <script type="module" src="./../js/catalogo.js"></script>
 </body>
 
 </html>

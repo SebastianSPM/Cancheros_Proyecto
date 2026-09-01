@@ -11,6 +11,14 @@ function validarFormulario(event) {
     const telefono = document.getElementById("telefono").value.trim();
     const mensaje = document.getElementById("mensaje").value.trim();
 
+    if(nombre === "" || (/^[^\s@]+@[^\s@]+\.[^\s@]+$/).test(correo) || telefono === "" || telefono === ""){
+        Swal.fire({
+            icon: "error",
+            title: "Algunos campos estan vacíos.",
+            text: "Porfavor completa los campos antes de envíar.",
+        })
+    }
+
     if (!validarNombre(nombre)) return;
 
     if (!validarCorreo(correo)) return;

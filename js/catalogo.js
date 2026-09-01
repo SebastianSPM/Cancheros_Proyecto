@@ -155,19 +155,12 @@ const modalCanchas = () => {
     }
 }
 
-
 function irReservar(){
 
     document.addEventListener("click", (event) => {
         if (event.target.classList.contains("reserva")) {
             if(!isLoggedIn){
-                Swal.fire({
-                    icon: "error",
-                    title: "Antes que nada",
-                    text: "Primero tienes que iniciar sesión",
-                }).then(() => {
-                    window.location.href = "./inicio-sesion.html"
-                })
+                window.location.href = "./inicio-sesion.html"
                 
             }else{
                 const idCancha = event.target.dataset.canchaId;
@@ -178,7 +171,6 @@ function irReservar(){
         }
     })
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
     cargarCanchasAdmin();

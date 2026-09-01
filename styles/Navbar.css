@@ -36,8 +36,6 @@ body{
 
 body{
 
-    font-family:'Source Sans 3', sans-serif;
-
     background-color:#F8F9FA;
 
 }
@@ -154,12 +152,9 @@ body{
     box-shadow:none;
 }
 
-
-
-
 @media(max-width:991px){
     .navbar-nav{
-        margin-top:20px;
+        margin-top:50px;
         text-align:center;
     }
     .nav-link{
@@ -331,6 +326,15 @@ body{
         margin: 0 auto;
     }
 
+}
+
+.userMenu {
+    min-width: 150px;
+    width: 150px;
+}
+
+.dropdown-item:hover{
+    background-color: #ffc107;
 }
 
 

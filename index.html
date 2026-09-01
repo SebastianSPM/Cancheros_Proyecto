@@ -16,8 +16,8 @@
 <body>
    
         <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2">
-            <div class="container-fluid px-4">
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2 ">
+            <div class="container-fluid px-4 mx-5">
                 <a class="navbar-brand" href="#">
                     <img src="./assets/images/logos/cancheros_letra.jpg" alt="Cancheros" class="logo-cancheros">
                 </a>
@@ -39,7 +39,16 @@
                             <a class="nav-link" href="./html/contactenos.html">Contacto</a>
                         </li>
                         <li class="nav-item ms-lg-3">
-                            <a href="html/inicio-sesion.html" class="btn login-btn" id="botonSesion">Entrar</a>
+                            <div class="dropdown">
+                                <a class="userDropdown dropdown-toggle btn btn-warning" data-bs-toggle="dropdown" autocomplete="off">
+                                    Entrar
+                                </a>
+
+                                <ul class="userMenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="./html/inicio-sesion.html">Iniciar sesión</a></li>
+                                    <li><a class="dropdown-item" href="./html/registro.html">Registrarse</a></li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -54,7 +63,7 @@
                         <h1 class="hero-title">Bienvenidos</h1>
                         <h2 class="hero-subtitle">goleadores</h2>
                         <p class="hero-description">
-                            Aquí podrán realizar sus reservas y disfrutar de un ambiente futbolista mucho mejor
+                            Aquí podrán realizar sus reservas y disfrutar de un ambiente futbolista
                         </p>
                     </div>
                 </div>
@@ -156,7 +165,7 @@
                     <div>
                         <h2 class="section-title text-uppercase fw-bold text-white m-0">Top Canchas del Mes</h2>
                     </div>
-                    <a href="#" class="btn btn-outline-light d-none d-md-inline-block">Ver todas <i
+                    <a href="./html/canchas.html" class="btn btn-outline-light d-none d-md-inline-block">Ver todas <i
                             class="bi bi-arrow-right"></i></a>
                 </div>
 
@@ -458,7 +467,9 @@
             <div class="container">
                 <div class="row gy-4">
                     <div class="col-12 col-md-6 col-lg-3 text-center text-lg-start">
-                        <img src="./assets/images/logos/logo_cancheros.png" alt="Logo Cancheros" class="footer-logo">
+                        <a href="#">
+                            <img src="./assets/images/logos/logo_cancheros.png" alt="Logo Cancheros" class="footer-logo">
+                        </a>
                     </div>
                     <div class="col-12 col-md-12 col-lg-6 text-center">
                         <h5 class="text-white mb-3">
@@ -467,7 +478,6 @@
                         <div class="footer-nav">
                             <a href="./index.html">Inicio</a>
                             <a href="./html/canchas.html">Canchas</a>
-                            <a href="#">Reservas</a>
                             <a href="./html/quienes-somos.html">Nosotros</a>
                             <a href="./html/contactenos.html">Contacto</a>
                         </div>
