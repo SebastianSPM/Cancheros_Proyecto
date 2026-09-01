@@ -308,4 +308,3 @@ formCancha.addEventListener("submit", async (event) => {
         icon: "success"
     });
 })
-

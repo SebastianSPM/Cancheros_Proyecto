@@ -20,7 +20,7 @@
     <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2">
-        <div class="container-fluid px-4">
+        <div class="container-fluid px-4 mx-5">
             <a class="navbar-brand" href="#">
                 <img src="../assets/images/logos/cancheros_letra.jpg" alt="Cancheros" class="logo-cancheros">
             </a>
@@ -36,18 +36,22 @@
                         <a class="nav-link" href="./canchas.html">Canchas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reservas</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="./quienes-somos.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./contactenos.html">Contacto</a>
                     </li>
                     <li class="nav-item ms-lg-3">
-                        <a href="#" class="btn login-btn">
+                        <div class="dropdown">
+                            <a class="userDropdown dropdown-toggle btn btn-warning" data-bs-toggle="dropdown" autocomplete="off">
                             Entrar
-                        </a>
+                            </a>
+
+                            <ul class="userMenu dropdown-menu">
+                                <li><a class="dropdown-item" href="./inicio-sesion.html">Iniciar sesión</a></li>
+                                <li><a class="dropdown-item" href="./registro.html">Registrarse</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -316,8 +320,8 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="../js/reservas.js"></script>
     <script src="../js/navbar.js"></script>
+    <script type="module" src="../js/reservas.js"></script>
 </body>
 
 </html>

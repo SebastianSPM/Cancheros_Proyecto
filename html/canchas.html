@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="../styles/Navbar.css" />
+  <link rel="stylesheet" href="../styles/inicio.css">
   <link rel="stylesheet" href="../styles/canchas.css" />
 </head>
 <body>
@@ -52,6 +53,49 @@
       </div>
     </div>
   </nav>
+
+    <!-- Filtro de reserva -->
+  <section class="booking-filter-section py-4">
+      <div class="container">
+          <div class="card filter-card border-0 shadow-lg p-3 p-md-4">
+              <form class="row g-3 align-items-end">
+                  <div class="col-12 col-md-4 col-lg-3">
+                      <label class="form-label text-white fw-bold"><i
+                              class="bi bi-geo-alt-fill me-1 text-success"></i> Ubicación / Zona</label>
+                      <select class="form-select custom-input">
+                          <option selected disabled>Selecciona localidad</option>
+                          <option value="suba">Puente Aranda</option>
+                          <option value="usaquen">Usaquén</option>
+                          <option value="engativa">Engativá</option>
+                          <option value="fontibon">Fontibón</option>
+                      </select>
+                  </div>
+
+                  <div class="col-12 col-md-4 col-lg-3">
+                      <label class="form-label text-white fw-bold"><i
+                              class="bi bi-person-arms-up me-1 text-success"></i> Tipo de Cancha</label>
+                      <select class="form-select custom-input">
+                          <option selected disabled>Modalidad</option>
+                          <option value="f5">Fútbol 5 (Sintética)</option>
+                          <option value="f8">Fútbol 8 (Sintética)</option>
+                          <option value="f11">Fútbol 11 (Sintética)</option>
+                      </select>
+                  </div>
+                  <div class="col-12 col-md-4 col-lg-3">
+                      <label class="form-label text-white fw-bold"><i
+                              class="bi bi-calendar-event me-1 text-success"></i> Fecha y Hora</label>
+                      <input type="datetime-local" class="form-control custom-input">
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <a href="#"
+                          class="btn btn-success-cancheros w-100 py-2 fw-bold text-center">
+                          <i class="bi bi-search me-1"></i> Buscar Cancha
+                      </a>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </section>
   
 
   <!--Contenido-->
