@@ -213,7 +213,7 @@ textarea{
 .headerModal{
     background-color: #2E7D32;
 }
-
+/*
 #agregarCancha .modal-dialog {
     max-height: 100vh;
 }
@@ -224,6 +224,16 @@ textarea{
 
 #agregarCancha .modal-body {
     overflow-y: auto;
+}*/
+
+
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabla-contenedor table {
+    min-width: 1100px;
 }
 
 /* Imagenes en modal */
@@ -309,3 +319,4 @@ textarea{
 .card-body{
     background-color: #FBC02D;
 }
+

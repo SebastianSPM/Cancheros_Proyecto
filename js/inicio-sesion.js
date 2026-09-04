@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(correoAdmin == email && claveAdmin == password){
       window.location.href = "./panel-administrador.html";
-      localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("currentUser", JSON.stringify({
         email: email, 
         password: password

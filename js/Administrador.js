@@ -1,7 +1,7 @@
 import { correoAdmin } from "./inicio-sesion.js"
 import { claveAdmin } from "./inicio-sesion.js";
 
-const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
+//const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"))
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
 const formCancha = document.getElementById("formCancha");
@@ -9,15 +9,9 @@ const tablaCanchas = document.getElementById("tablaCanchas");
 const salirbtn = document.getElementById("salirbtn");
 
 salirbtn.addEventListener("click", () => {
-    localStorage.removeItem("isLoggedIn")
     localStorage.removeItem("currentUser")
     window.location.href = "./inicio-sesion.html"
 })
-
-//Válidar si el usuario esta activo
-if(!isLoggedIn){
-    window.location.href = "./inicio-sesion.html"
-}
 
 if(currentUser.email != correoAdmin && currentUser.password != claveAdmin){
     window.location.href = "./inicio-sesion.html"

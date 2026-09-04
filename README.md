@@ -98,11 +98,27 @@ Aplicación web para la gestión y reserva de canchas de fútbol sintéticas, co
             stylevalores.css
 ```
 
-### Tecnologías
+## Tecnologías
 - HTML
 - CSS
 - JS
 - Bootstrap
+
+## Pasos generales para ejecutar el proyecto
+```
+-Clonar o descargar el proyecto
+-Abre la carpeta en tu editor escogido
+-Puedes abrir el archivo directamente en el navegador o
+usar la extensión de VS Code para simular un servidor
+```
+
+## ¿Cómo ingresar para recibir toda la experiencia de nuestro sistema?
+### Usuario normal
+Debes registrarlo
+
+### Administrador
+Correo: admin@dominio.com
+Clave: admin123456#
 
 ## Integrantes
 - Kevin Soto
@@ -118,7 +134,7 @@ https://trello.com/invite/b/6a60ff4919279d93008b89b5/ATTI76673b0faa30ff1b07866d8
 https://www.figma.com/design/HmLqIzMrOV1tWiBcF66xGn/Proyecto-cancheros?node-id=0-1&t=1tJO1xKtTtmMNx4X-1
 
 ### Vercel
-https://cancheros-proyecto.vercel.app/index.html
+[https://cancheros-proyecto.vercel.app/index.html](https://cancheros-proyecto.vercel.app/index.html)
 
 
 
