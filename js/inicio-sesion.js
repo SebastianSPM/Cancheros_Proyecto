@@ -1,5 +1,5 @@
-const correoAdmin = "admin@dominio.com";
-const claveAdmin = "admin123456#";
+export const correoAdmin = "admin@dominio.com";
+export const claveAdmin = "admin123456#";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -69,6 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if(correoAdmin == email && claveAdmin == password){
       window.location.href = "./panel-administrador.html";
       localStorage.setItem("isLoggedIn", "true");
+      localStorage.setItem("currentUser", JSON.stringify({
+        email: email, 
+        password: password
+      }));
       return;
     }
 

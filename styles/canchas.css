@@ -322,6 +322,7 @@
     }
 
 }
+
 :root {
   --bg-light: #F8F9FA;
   --primary-green: #2E7D32;
@@ -401,4 +402,9 @@
 
 .conteo{
     color: #fff;
+}
+
+.filter-card {
+    max-width: 1100px;
+    margin: 0 auto;
 }

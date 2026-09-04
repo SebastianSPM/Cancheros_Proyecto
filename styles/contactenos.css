@@ -556,7 +556,7 @@ textarea{
             rgba(38, 50, 56, 0.88),
             rgba(38, 50, 56, 0.72)
         ),
-        url("../../imagenes/contacto-cancha.jpg");
+        url("../assets/images/canchas/contacto-cancha.jpg");
 
     background-size: cover;
     background-position: center center;

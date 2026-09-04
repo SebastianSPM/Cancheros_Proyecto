@@ -221,3 +221,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+const botonMisReservas = document.getElementById("misReservas");
+
+if (botonMisReservas) {
+    botonMisReservas.addEventListener("click", function () {
+
+        window.location.href = "./mis-reservas.html";
+
+    });
+}

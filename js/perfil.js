@@ -330,7 +330,7 @@ botonCambiarPassword.addEventListener("click", () => {
 });
 
 
-        const botonCerrarSesion = document.getElementById("cerrarSesion");   //para que cuando el usuario cierre sesion vuelva a mostrar Entrar
+const botonCerrarSesion = document.getElementById("cerrarSesion");   //para que cuando el usuario cierre sesion vuelva a mostrar Entrar
 botonCerrarSesion.addEventListener("click", () => {    
     localStorage.removeItem("currentUser");
     localStorage.removeItem("isLoggedIn");

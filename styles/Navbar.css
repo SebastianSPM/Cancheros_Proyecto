@@ -328,13 +328,62 @@ body{
 
 }
 
-.userMenu {
-    min-width: 150px;
-    width: 150px;
-}
-
 .dropdown-item:hover{
     background-color: #ffc107;
+}
+
+.dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center {
+    position: relative;
+    justify-content: center;
+    justify-items: center;
+}
+
+
+
+/* Botón del usuario */
+.userDropdown {
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Menú desplegable */
+.userMenu {
+    min-width: 150px;
+    margin-top: 10px !important;
+    padding: 8px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Elementos */
+.userMenu .dropdown-item {
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+/* Hover */
+.userMenu .dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* Separador */
+.userMenu .dropdown-divider {
+    margin: 7px 4px;
+}
+
+/* Cerrar sesión */
+.userMenu .cerrarSesion {
+    color: #dc3545;
+}
+
+.userMenu .cerrarSesion:hover {
+    background-color: #fff0f0;
+    color: #dc3545;
 }
 
 

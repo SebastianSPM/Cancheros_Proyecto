@@ -174,8 +174,20 @@ textarea{
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
+.bi-pencil-square{
+    display: inline-block;
+    font-size:25px;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
 .trash-logo:hover{
     color: red;
+    transform: scale(1.2);
+}
+
+.bi-pencil-square:hover{
+    color: rgb(22, 133, 31);
     transform: scale(1.2);
 }
 
@@ -200,4 +212,100 @@ textarea{
 
 .headerModal{
     background-color: #2E7D32;
+}
+
+#agregarCancha .modal-dialog {
+    max-height: 100vh;
+}
+
+#agregarCancha .modal-content {
+    max-height: 100vh;
+}
+
+#agregarCancha .modal-body {
+    overflow-y: auto;
+}
+
+/* Imagenes en modal */
+
+.imagen-box,
+.imagen-agregar {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #ced4da;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.imagen-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imagen-box button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    border-radius: 50%;
+    background: #dc3545;
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+
+.imagen-agregar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.imagen-agregar i {
+    font-size: 25px;
+}
+
+/* Resumen */
+
+#resumenCanchas {
+    margin-top: 1.5rem;
+}
+
+.resumen-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+    height: 100%;
+}
+
+.resumen-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.12);
+}
+
+.resumen-card .card-body {
+    padding: 1.4rem;
+}
+
+.resumen-card h6 {
+    margin: 0 0 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.resumen-card h3 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.card-body{
+    background-color: #FBC02D;
 }

@@ -438,7 +438,7 @@ const mostrarCancha = () => {
     document.getElementById(
         "imagenCancha"
     ).src =
-        cancha.imagen;
+        cancha.imagen[0];
 
 
     document.getElementById(

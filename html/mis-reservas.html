@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis reservas | Cancheros</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logos/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../styles/Navbar.css" />
+  </head>
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2">
+      <div class="container-fluid px-4 mx-5">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../assets/images/logos/cancheros_letra.jpg"
+            alt="Cancheros"
+            class="logo-cancheros"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="menu">
+          <ul class="navbar-nav align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./canchas.html">Canchas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./quienes-somos.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contactenos.html">Contacto</a>
+            </li>
+            <li class="nav-item ms-lg-3">
+              <div class="dropdown">
+                <a
+                  class="userDropdown dropdown-toggle btn btn-warning"
+                  data-bs-toggle="dropdown"
+                  autocomplete="off"
+                >
+                  Entrar
+                </a>
+
+                <ul class="userMenu dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./inicio-sesion.html"
+                      >Iniciar sesión</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./registro.html"
+                      >Registrarse</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ================= CONTENIDO ================= -->
+
+    <main class="container mis-reservas-container">
+      <h1 class="titulo-reservas">Mis reservas</h1>
+
+      <p class="descripcion-reservas">
+        Aquí puedes consultar todas tus reservas
+      </p>
+
+      <!-- ================= TABLA ================= -->
+
+      <div class="tabla-responsive">
+        <table class="table tabla-reservas">
+          <thead>
+            <tr>
+              <th>Cancha</th>
+
+              <th>Fecha</th>
+
+              <th>Hora</th>
+
+              <th>Precio</th>
+
+              <th>Estado</th>
+
+              <th>Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody id="listaReservas">
+            <!--
+                    Las reservas se cargarán
+                    mediante JavaScript.
+                -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ================= MENSAJE SIN RESERVAS ================= -->
+
+      <div id="sinReservas" class="text-center mt-4" style="display: none">
+        <i class="bi bi-calendar-x fs-1"></i>
+
+        <h3>No tienes reservas próximas</h3>
+
+        <p>Cuando realices una reserva aparecerá aquí.</p>
+      </div>
+    </main>
+
+    <!-- ================= MODAL EDITAR ================= -->
+
+    <div
+      class="modal fade"
+      id="modalEditarReserva"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- HEADER -->
+
+          <div class="modal-header">
+            <h5 class="modal-title">Editar reserva</h5>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <!-- BODY -->
+
+          <div class="modal-body">
+            <!-- CANCHA -->
+
+            <div class="mb-3">
+              <label for="editarCancha" class="form-label"> Cancha </label>
+
+              <input
+                type="text"
+                class="form-control"
+                id="editarCancha"
+                readonly
+              />
+            </div>
+            <!-- FECHA -->
+            <div class="mb-3">
+              <label for="editarFecha" class="form-label"> Fecha </label>
+              <input type="date" class="form-control" id="editarFecha" />
+            </div>
+            <!-- HORA -->
+            <div class="mb-3">
+              <label for="editarHora" class="form-label"> Hora </label>
+              <input type="time" class="form-control" id="editarHora" />
+            </div>
+            <div
+                id="horariosDisponibles"
+                class="d-flex flex-wrap gap-2 mt-2"
+            ></div>
+            <!-- PRECIO -->
+            <div class="mb-3">
+              <label for="editarPrecio" class="form-label"> Precio </label>
+
+              <input
+                type="text"
+                class="form-control"
+                id="editarPrecio"
+                readonly
+              />
+            </div>
+          </div>
+
+          <!-- FOOTER -->
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+
+            <button type="button" class="btn btn-warning" id="guardarCambios">
+              Guardar cambios
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================= SCRIPTS ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/mis-reservas.js"></script>
+  </body>
+</html>

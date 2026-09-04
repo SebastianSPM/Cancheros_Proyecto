@@ -1,181 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil | Cancheros</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logos/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="../styles/perfil.css" />
+    <link rel="stylesheet" href="../styles/Navbar.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Mi perfil | Cancheros</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Estilos -->
-    <link rel="stylesheet" href="../styles/perfil.css">
-    <link rel="stylesheet" href="../styles/Navbar.css">
-</head>
-
-<body>
+  <body>
     <!-- ================= NAVBAR ================= -->
-
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm py-1">
-    <div class="container-fluid px-4">
-
-        <a class="navbar-brand" href="../index.html">
-            <img src="../assets/images/logos/cancheros_letra.jpg"
-                 alt="Cancheros"
-                 class="logo-cancheros">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-2">
+      <div class="container-fluid px-4 mx-5">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../assets/images/logos/cancheros_letra.jpg"
+            alt="Cancheros"
+            class="logo-cancheros"
+          />
         </a>
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#menu">
-
-            <span class="navbar-toggler-icon"></span>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="menu">
+          <ul class="navbar-nav align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./canchas.html">Canchas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./quienes-somos.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./contactenos.html">Contacto</a>
+            </li>
+            <li class="nav-item ms-lg-3">
+              <div class="dropdown">
+                <a
+                  class="userDropdown dropdown-toggle btn btn-warning"
+                  data-bs-toggle="dropdown"
+                  autocomplete="off"
+                >
+                  Entrar
+                </a>
 
-            <ul class="navbar-nav align-items-lg-center">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../index.html">
-                        Inicio
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="./canchas.html">
-                        Canchas
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="./quienes-somos.html">
-                        Nosotros
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="./contactenos.html">
-                        Contacto
-                    </a>
-                </li>
-
-                <li class="nav-item ms-lg-3">
-                    <div class="dropdown">
-                        <a class="btn btn-warning" data-bs-toggle="dropdown" autocomplete="off">
-                            Mi perfil
-                        </a>
-                    </div>
-                </li>
-            </ul>
+                <ul class="userMenu dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./inicio-sesion.html"
+                      >Iniciar sesión</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./registro.html"
+                      >Registrarse</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
-    </div>
-</nav>
+      </div>
+    </nav>
+    <!-- ================= CONTENIDO DEL PERFIL ================= -->
+    <main class="container perfil-container">
+      <!-- Título -->
+      <h1 class="titulo-perfil">Mi perfil</h1>
 
-
-<!-- ================= CONTENIDO DEL PERFIL ================= -->
-
-<main class="container perfil-container">
-
-    <!-- Título -->
-    <h1 class="titulo-perfil">Mi perfil</h1>
-
-    <!-- Foto de perfil -->
-    <section class="foto-perfil">
-
+      <!-- Foto de perfil -->
+      <section class="foto-perfil">
         <div class="avatar">
-            <i class="bi bi-person-fill"></i>
+          <i class="bi bi-person-fill"></i>
         </div>
 
         <button type="button" class="btn editar-foto" id="editarFoto">
-            <i class="bi bi-pencil-fill"></i>
-            Editar foto
+          <i class="bi bi-pencil-fill"></i>
+          Editar foto
         </button>
-        <input type="file" id="inputFoto" accept="image/*" hidden>  <!--input no apareceera visualmente, se utiliza para abrir la ventana de slector de archivos-->
+        <input type="file" id="inputFoto" accept="image/*" hidden />
+        <!--input no apareceera visualmente, se utiliza para abrir la ventana de slector de archivos-->
+      </section>
 
-    </section>
-
-
-    <!-- Datos personales -->
-    <section class="datos-personales">
-
+      <!-- Datos personales -->
+      <section class="datos-personales">
         <h2>Datos personales</h2>
 
         <p>
-            <strong>Nombre:</strong>
-            <span id="nombreUsuario"></span>
+          <strong>Nombre:</strong>
+          <span id="nombreUsuario"></span>
         </p>
 
         <p>
-            <strong>Correo:</strong>
-            <span id="correoUsuario"></span>
+          <strong>Correo:</strong>
+          <span id="correoUsuario"></span>
         </p>
 
         <p>
-            <strong>Número de contacto:</strong>
-            <span id="telefonoUsuario"></span>
+          <strong>Número de contacto:</strong>
+          <span id="telefonoUsuario"></span>
         </p>
 
         <button type="button" class="btn editar-datos" id="editarDatos">
-            <i class="bi bi-pencil-fill"></i>
-            Editar datos de contacto
+          <i class="bi bi-pencil-fill"></i>
+          Editar datos de contacto
         </button>
+      </section>
 
-    </section>
-
-
-    <!-- Histórico de reservas -->
-    <section class="historial-reservas">
-
+      <!-- Histórico de reservas -->
+      <section class="historial-reservas">
         <h2>Historial de reservas</h2>
 
         <div class="tabla-responsive">
+          <table class="tabla-reservas">
+            <thead>
+              <tr>
+                <th>Fecha de reserva</th>
+                <th>Hora de reserva</th>
+                <th>Lugar</th>
+                <th>Precio</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
 
-            <table class="tabla-reservas">
-
-                <thead>
-                    <tr>
-                        <th>Fecha de reserva</th>
-                        <th>Hora de reserva</th>
-                        <th>Lugar</th>
-                        <th>Precio</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-
-                <tbody id="historialReservas">
-                    <!-- Las reservas aparecerán aquí posteriormente con JavaScript -->
-                </tbody>
-
-            </table>
-
+            <tbody id="historialReservas">
+              <!-- Las reservas aparecerán aquí posteriormente con JavaScript -->
+            </tbody>
+          </table>
         </div>
+      </section>
 
-    </section>
+      <!-- Botones de la cuenta -->
 
-        <!-- Botones de la cuenta -->
-
-    <div class="botones-perfil">
-
+      <div class="botones-perfil">
         <button type="button" class="btn btn-perfil" id="cambiarPassword">
-            Cambiar la contraseña
+          Cambiar la contraseña
         </button>
 
         <button type="button" class="btn btn-perfil" id="cerrarSesion">
-            Cerrar sesión
+          Cerrar sesión
         </button>
-
-    </div>
-
-</main>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="../js/perfil.js"></script>
-</body>
-
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/perfil.js"></script>
+    <script src="../js/navbar.js"></script>
+  </body>
 </html>
