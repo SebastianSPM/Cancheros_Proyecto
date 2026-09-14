@@ -1,20 +1,5 @@
 
-// =====================================================
-// MIS RESERVAS
-// =====================================================
-
-
-// =====================================================
-// OBTENER RESERVAS DEL LOCAL STORAGE
-// =====================================================
-
-const obtenerReservas = () => {
-
-    return JSON.parse(
-        localStorage.getItem("reservas")
-    ) || [];
-
-};
+import { apiFetch } from "./api.js";
 
 
 // =====================================================
@@ -23,10 +8,21 @@ const obtenerReservas = () => {
 
 const obtenerUsuarioActual = () => {
 
-    return JSON.parse(
-        localStorage.getItem("currentUser")
-    );
+    try {
 
+        return JSON.parse(
+            localStorage.getItem("currentUser")
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error obteniendo usuario:",
+            error
+        );
+
+        return null;
+    }
 };
 
 
@@ -48,8 +44,13 @@ const sinReservas =
 const modalElement =
     document.getElementById("modalEditarReserva");
 
-const modalEditar =
-    new bootstrap.Modal(modalElement);
+let modalEditar = null;
+
+if (modalElement) {
+
+    modalEditar =
+        new bootstrap.Modal(modalElement);
+}
 
 
 // =====================================================
@@ -83,18 +84,7 @@ let reservaSeleccionada = null;
 
 
 // =====================================================
-// OBTENER FECHA Y HORA ACTUAL
-// =====================================================
-
-const obtenerFechaHoraActual = () => {
-
-    return new Date();
-
-};
-
-
-// =====================================================
-// OBTENER FECHA ACTUAL YYYY-MM-DD
+// OBTENER FECHA ACTUAL
 // =====================================================
 
 const obtenerFechaHoy = () => {
@@ -115,7 +105,6 @@ const obtenerFechaHoy = () => {
         ).padStart(2, "0");
 
     return `${año}-${mes}-${dia}`;
-
 };
 
 
@@ -136,125 +125,16 @@ const convertirFechaHora = (
 
 
 // =====================================================
-// CONVERTIR HORA A MINUTOS
-// =====================================================
-
-const convertirHoraAMinutos = (
-    hora
-) => {
-
-    const [horas, minutos] =
-        hora.split(":").map(Number);
-
-    return (
-        horas * 60
-    ) + minutos;
-
-};
-
-
-// =====================================================
-// CALCULAR HORA FINAL
-// =====================================================
-
-const calcularHoraFinal = (
-    horaInicio,
-    duracion
-) => {
-
-    return (
-        convertirHoraAMinutos(horaInicio)
-        +
-        Number(duracion) * 60
-    );
-
-};
-
-
-// =====================================================
-// OBTENER RESERVAS DEL USUARIO
-// =====================================================
-
-const obtenerReservasDelUsuario = () => {
-
-    const reservas =
-        obtenerReservas();
-
-    const usuario =
-        obtenerUsuarioActual();
-
-
-    // Si no hay usuario iniciado
-    if (!usuario) {
-
-        window.location.href =
-            "inicio-sesion.html";
-
-        return [];
-
-    }
-
-
-    // Buscar por email
-    if (usuario.email) {
-
-        return reservas.filter(
-            reserva =>
-                reserva.email === usuario.email
-        );
-
-    }
-
-
-    return [];
-
-};
-
-
-// =====================================================
-// OBTENER SOLO RESERVAS FUTURAS
-// =====================================================
-
-const obtenerReservasFuturas = () => {
-
-    const reservas =
-        obtenerReservasDelUsuario();
-
-    const ahora =
-        obtenerFechaHoraActual();
-
-
-    return reservas.filter(reserva => {
-
-        // Las canceladas no aparecen
-        if (
-            reserva.estado === "CANCELADA"
-        ) {
-            return false;
-        }
-
-
-        const fechaHoraReserva =
-            convertirFechaHora(
-                reserva.fecha,
-                reserva.hora
-            );
-
-
-        return fechaHoraReserva > ahora;
-
-    });
-
-};
-
-
-// =====================================================
 // FORMATEAR FECHA
 // =====================================================
 
 const formatearFecha = (
     fecha
 ) => {
+
+    if (!fecha) {
+        return "";
+    }
 
     const [
         año,
@@ -263,7 +143,22 @@ const formatearFecha = (
     ] = fecha.split("-");
 
     return `${dia}/${mes}/${año}`;
+};
 
+
+// =====================================================
+// FORMATEAR HORA
+// =====================================================
+
+const formatearHora = (
+    hora
+) => {
+
+    if (!hora) {
+        return "";
+    }
+
+    return hora.substring(0, 5);
 };
 
 
@@ -275,384 +170,121 @@ const formatearPrecio = (
     precio
 ) => {
 
-    return Number(precio)
-        .toLocaleString("es-CO");
+    return Number(
+        precio || 0
+    ).toLocaleString("es-CO");
 
 };
 
 
 // =====================================================
-// VERIFICAR SI UN HORARIO ESTÁ OCUPADO
+// OBTENER MIS RESERVAS DESDE EL BACKEND
 // =====================================================
 
-const horarioEstaOcupado = (
-    reservaActual,
-    nuevaFecha,
-    nuevaHora
-) => {
+const obtenerMisReservas = async () => {
 
-    const reservas =
-        obtenerReservas();
+    const usuario =
+        obtenerUsuarioActual();
 
 
-    const nuevaHoraInicio =
-        convertirHoraAMinutos(
-            nuevaHora
-        );
+    if (!usuario || !usuario.id) {
+
+        window.location.href =
+            "./inicio-sesion.html";
+
+        return [];
+
+    }
 
 
-    const nuevaHoraFinal =
-        calcularHoraFinal(
-            nuevaHora,
-            reservaActual.duracion
-        );
+    try {
 
-
-    return reservas.some(reserva => {
-
-
-        // ==========================================
-        // IGNORAR LA RESERVA QUE ESTAMOS EDITANDO
-        // ==========================================
-
-        if (
-            Number(reserva.id) ===
-            Number(reservaActual.id)
-        ) {
-
-            return false;
-
-        }
-
-
-        // ==========================================
-        // LAS CANCELADAS NO BLOQUEAN
-        // ==========================================
-
-        if (
-            reserva.estado === "CANCELADA"
-        ) {
-
-            return false;
-
-        }
-
-
-        // ==========================================
-        // MISMA CANCHA
-        // ==========================================
-
-        if (
-            Number(reserva.canchaId) !==
-            Number(reservaActual.canchaId)
-        ) {
-
-            return false;
-
-        }
-
-
-        // ==========================================
-        // MISMA FECHA
-        // ==========================================
-
-        if (
-            reserva.fecha !==
-            nuevaFecha
-        ) {
-
-            return false;
-
-        }
-
-
-        // ==========================================
-        // HORA INICIAL DE RESERVA EXISTENTE
-        // ==========================================
-
-        const reservaHoraInicio =
-            convertirHoraAMinutos(
-                reserva.hora
+        const reservas =
+            await apiFetch(
+                `/api/reservas/mis-reservas?usuarioId=${usuario.id}`
             );
 
 
-        // ==========================================
-        // HORA FINAL DE RESERVA EXISTENTE
-        // ==========================================
-
-        const reservaHoraFinal =
-            calcularHoraFinal(
-                reserva.hora,
-                reserva.duracion
-            );
-
-
-        // ==========================================
-        // COMPROBAR CRUCE
-        // ==========================================
-
-        return (
-            nuevaHoraInicio <
-            reservaHoraFinal
-
-            &&
-
-            nuevaHoraFinal >
-            reservaHoraInicio
+        console.log(
+            "Mis reservas:",
+            reservas
         );
 
-    });
+
+        return reservas || [];
+
+
+    } catch (error) {
+
+        console.error(
+            "Error obteniendo reservas:",
+            error
+        );
+
+
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text:
+                error.message ||
+                "No se pudieron cargar tus reservas."
+        });
+
+
+        return [];
+
+    }
 
 };
 
 
 // =====================================================
-// MOSTRAR HORARIOS DISPONIBLES
+// OBTENER RESERVAS FUTURAS
 // =====================================================
 
-const mostrarHorariosDisponibles = (
-    fecha
+const obtenerReservasFuturas = (
+    reservas
 ) => {
-
-    horariosDisponibles.innerHTML = "";
-
-    editarHora.value = "";
-
-
-    // ==========================================
-    // VALIDAR FECHA
-    // ==========================================
-
-    if (!fecha) {
-
-        horariosDisponibles.innerHTML = `
-            <span class="text-muted">
-                Selecciona una fecha.
-            </span>
-        `;
-
-        return;
-
-    }
-
-
-    if (!reservaSeleccionada) {
-
-        return;
-
-    }
-
-
-    // ==========================================
-    // CONFIGURACIÓN DEL HORARIO
-    // ==========================================
-
-    const horaInicio = 8;
-
-    const horaFin = 22;
-
-    const duracion =
-        Number(
-            reservaSeleccionada.duracion
-        );
-
-
-    // ==========================================
-    // FECHA Y HORA ACTUAL
-    // ==========================================
 
     const ahora =
-        obtenerFechaHoraActual();
-
-    const hoy =
-        obtenerFechaHoy();
-
-    const minutosAhora =
-        ahora.getHours() * 60
-        +
-        ahora.getMinutes();
+        new Date();
 
 
-    let cantidadDisponibles = 0;
+    return reservas.filter(
+        reserva => {
 
+            // -----------------------------------------
+            // CANCELADAS NO SE MUESTRAN
+            // -----------------------------------------
 
-    // ==========================================
-    // RECORRER HORARIOS
-    // ==========================================
+            if (
+                reserva.estado ===
+                "CANCELADA"
+            ) {
 
-    for (
-        let hora = horaInicio;
-        hora < horaFin;
-        hora++
-    ) {
-
-
-        const horaTexto =
-            `${String(hora).padStart(2, "0")}:00`;
-
-
-        // ==========================================
-        // CALCULAR HORA FINAL
-        // ==========================================
-
-        const horaFinal =
-            hora + duracion;
-
-
-        // No permitir terminar después de 22:00
-
-        if (
-            horaFinal > horaFin
-        ) {
-
-            continue;
-
-        }
-
-
-        // ==========================================
-        // VERIFICAR SI LA HORA YA PASÓ
-        // ==========================================
-
-        let horaYaPaso = false;
-
-
-        if (
-            fecha === hoy
-        ) {
-
-            const minutosHora =
-                hora * 60;
-
-
-            horaYaPaso =
-                minutosHora <
-                minutosAhora;
-
-        }
-
-
-        // ==========================================
-        // VERIFICAR SI ESTÁ OCUPADA
-        // ==========================================
-
-        const ocupado =
-            horarioEstaOcupado(
-                reservaSeleccionada,
-                fecha,
-                horaTexto
-            );
-
-
-        // ==========================================
-        // SOLO MOSTRAR DISPONIBLES
-        // ==========================================
-
-        if (
-            horaYaPaso ||
-            ocupado
-        ) {
-
-            continue;
-
-        }
-
-
-        // ==========================================
-        // CREAR BOTÓN
-        // ==========================================
-
-        const boton =
-            document.createElement("button");
-
-
-        boton.type = "button";
-
-        boton.className =
-            "btn btn-outline-success";
-
-        boton.textContent =
-            horaTexto;
-
-
-        boton.dataset.hora =
-            horaTexto;
-
-
-        // ==========================================
-        // SELECCIONAR HORARIO
-        // ==========================================
-
-        boton.addEventListener(
-            "click",
-            () => {
-
-
-                // Quitar selección anterior
-
-                document
-                    .querySelectorAll(
-                        "#horariosDisponibles button"
-                    )
-                    .forEach(btn => {
-
-                        btn.classList.remove(
-                            "btn-success"
-                        );
-
-                        btn.classList.add(
-                            "btn-outline-success"
-                        );
-
-                    });
-
-
-                // Marcar botón seleccionado
-
-                boton.classList.remove(
-                    "btn-outline-success"
-                );
-
-                boton.classList.add(
-                    "btn-success"
-                );
-
-
-                // Guardar hora
-
-                editarHora.value =
-                    boton.dataset.hora;
+                return false;
 
             }
-        );
 
 
-        horariosDisponibles.appendChild(
-            boton
-        );
+            // -----------------------------------------
+            // FECHA + HORA
+            // -----------------------------------------
+
+            const fechaHoraReserva =
+                convertirFechaHora(
+                    reserva.fecha,
+                    reserva.horaInicio
+                );
 
 
-        cantidadDisponibles++;
+            return (
+                fechaHoraReserva >
+                ahora
+            );
 
-    }
-
-
-    // ==========================================
-    // SI NO HAY HORARIOS
-    // ==========================================
-
-    if (
-        cantidadDisponibles === 0
-    ) {
-
-        horariosDisponibles.innerHTML = `
-            <div class="alert alert-warning mb-0">
-                <i class="bi bi-exclamation-triangle"></i>
-                No hay horarios disponibles para esta fecha.
-            </div>
-        `;
-
-    }
+        }
+    );
 
 };
 
@@ -661,18 +293,46 @@ const mostrarHorariosDisponibles = (
 // MOSTRAR RESERVAS
 // =====================================================
 
-const mostrarReservas = () => {
+const mostrarReservas = async () => {
 
     listaReservas.innerHTML = "";
 
 
+    // Mostrar cargando
+
+    sinReservas.style.display =
+        "none";
+
+
+    listaReservas.innerHTML = `
+        <tr>
+            <td colspan="6" class="text-center">
+                Cargando reservas...
+            </td>
+        </tr>
+    `;
+
+
+    // -----------------------------------------------
+    // OBTENER DESDE BACKEND
+    // -----------------------------------------------
+
+    const reservas =
+        await obtenerMisReservas();
+
+
     const reservasFuturas =
-        obtenerReservasFuturas();
+        obtenerReservasFuturas(
+            reservas
+        );
 
 
-    // ==========================================
+    listaReservas.innerHTML = "";
+
+
+    // =================================================
     // NO HAY RESERVAS
-    // ==========================================
+    // =================================================
 
     if (
         reservasFuturas.length === 0
@@ -690,13 +350,12 @@ const mostrarReservas = () => {
         "none";
 
 
-    // ==========================================
+    // =================================================
     // CREAR FILAS
-    // ==========================================
+    // =================================================
 
     reservasFuturas.forEach(
         reserva => {
-
 
             const fila =
                 document.createElement("tr");
@@ -715,7 +374,13 @@ const mostrarReservas = () => {
                 </td>
 
                 <td>
-                    ${reserva.hora}
+                    ${formatearHora(
+                        reserva.horaInicio
+                    )}
+                    -
+                    ${formatearHora(
+                        reserva.horaFin
+                    )}
                 </td>
 
                 <td>
@@ -726,8 +391,14 @@ const mostrarReservas = () => {
 
                 <td>
 
-                    <span class="badge bg-success">
-                        CONFIRMADA
+                    <span class="badge ${
+                        reserva.estado === "CONFIRMADA"
+                            ? "bg-success"
+                            : "bg-secondary"
+                    }">
+
+                        ${reserva.estado}
+
                     </span>
 
                 </td>
@@ -770,52 +441,363 @@ const mostrarReservas = () => {
     );
 
 
-    // ==========================================
+    // =================================================
     // BOTONES EDITAR
-    // ==========================================
+    // =================================================
 
     document
         .querySelectorAll(".btn-editar")
-        .forEach(boton => {
+        .forEach(
+            boton => {
 
-            boton.addEventListener(
-                "click",
-                () => {
+                boton.addEventListener(
+                    "click",
+                    () => {
 
-                    abrirEditar(
-                        Number(
-                            boton.dataset.id
-                        )
-                    );
+                        abrirEditar(
+                            Number(
+                                boton.dataset.id
+                            )
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 
-    // ==========================================
+    // =================================================
     // BOTONES CANCELAR
-    // ==========================================
+    // =================================================
 
     document
         .querySelectorAll(".btn-cancelar")
-        .forEach(boton => {
+        .forEach(
+            boton => {
 
-            boton.addEventListener(
-                "click",
-                () => {
+                boton.addEventListener(
+                    "click",
+                    () => {
 
-                    cancelarReserva(
-                        Number(
-                            boton.dataset.id
-                        )
-                    );
+                        cancelarReserva(
+                            Number(
+                                boton.dataset.id
+                            )
+                        );
 
-                }
+                    }
+                );
+
+            }
+        );
+
+};
+
+
+// =====================================================
+// OBTENER DETALLE DE RESERVA
+// =====================================================
+
+const obtenerDetalleReserva = async (
+    reservaId
+) => {
+
+    const usuario =
+        obtenerUsuarioActual();
+
+
+    if (!usuario || !usuario.id) {
+
+        return null;
+
+    }
+
+
+    try {
+
+        return await apiFetch(
+            `/api/reservas/${reservaId}?usuarioId=${usuario.id}`
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error obteniendo detalle:",
+            error
+        );
+
+
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: error.message
+        });
+
+
+        return null;
+
+    }
+
+};
+
+
+// =====================================================
+// MOSTRAR HORARIOS DISPONIBLES
+// =====================================================
+
+const mostrarHorariosDisponibles = async (
+    fecha
+) => {
+
+    horariosDisponibles.innerHTML = "";
+
+    editarHora.value = "";
+
+
+    // -----------------------------------------------
+    // VALIDAR
+    // -----------------------------------------------
+
+    if (!fecha) {
+
+        horariosDisponibles.innerHTML = `
+            <span class="text-muted">
+                Selecciona una fecha.
+            </span>
+        `;
+
+        return;
+
+    }
+
+
+    if (!reservaSeleccionada) {
+
+        return;
+
+    }
+
+
+    try {
+
+        // =============================================
+        // CONSULTAR BACKEND
+        // =============================================
+
+        const horarios =
+            await apiFetch(
+                `/api/reservas/disponibilidad?canchaId=${reservaSeleccionada.canchaId}&fecha=${fecha}`
             );
 
+
+        console.log(
+            "Disponibilidad para editar:",
+            horarios
+        );
+
+
+        // =============================================
+        // DURACIÓN DE LA RESERVA
+        // =============================================
+
+        const duracion =
+            Number(
+                reservaSeleccionada.duracion
+            );
+
+
+        let cantidadDisponibles = 0;
+
+
+        // =============================================
+        // EVALUAR HORARIOS
+        // =============================================
+
+        horarios.forEach(
+            (horario, index) => {
+
+                const horaInicio =
+                    formatearHora(
+                        horario.horaInicio
+                    );
+
+
+                const horaFin =
+                    formatearHora(
+                        horario.horaFin
+                    );
+
+
+                // -----------------------------------------
+                // COMPROBAR BLOQUES CONTINUOS
+                // -----------------------------------------
+
+                let bloquesDisponibles =
+                    horario.disponible;
+
+
+                if (
+                    duracion > 1
+                ) {
+
+                    for (
+                        let i = 1;
+                        i < duracion;
+                        i++
+                    ) {
+
+                        const siguiente =
+                            horarios[index + i];
+
+
+                        if (
+                            !siguiente ||
+                            !siguiente.disponible
+                        ) {
+
+                            bloquesDisponibles =
+                                false;
+
+                            break;
+
+                        }
+
+                    }
+
+                }
+
+
+                // -----------------------------------------
+                // CREAR BOTÓN
+                // -----------------------------------------
+
+                if (
+                    !bloquesDisponibles
+                ) {
+
+                    return;
+
+                }
+
+
+                const boton =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                boton.type =
+                    "button";
+
+
+                boton.className =
+                    "btn btn-outline-success";
+
+
+                boton.textContent =
+                    horaInicio;
+
+
+                boton.dataset.hora =
+                    horaInicio;
+
+
+                // -----------------------------------------
+                // SELECCIONAR
+                // -----------------------------------------
+
+                boton.addEventListener(
+                    "click",
+                    () => {
+
+                        document
+                            .querySelectorAll(
+                                "#horariosDisponibles button"
+                            )
+                            .forEach(
+                                btn => {
+
+                                    btn.classList.remove(
+                                        "btn-success"
+                                    );
+
+                                    btn.classList.add(
+                                        "btn-outline-success"
+                                    );
+
+                                }
+                            );
+
+
+                        boton.classList.remove(
+                            "btn-outline-success"
+                        );
+
+
+                        boton.classList.add(
+                            "btn-success"
+                        );
+
+
+                        editarHora.value =
+                            boton.dataset.hora;
+
+                    }
+                );
+
+
+                horariosDisponibles.appendChild(
+                    boton
+                );
+
+
+                cantidadDisponibles++;
+
+            }
+        );
+
+
+        // =============================================
+        // SIN HORARIOS
+        // =============================================
+
+        if (
+            cantidadDisponibles === 0
+        ) {
+
+            horariosDisponibles.innerHTML = `
+                <div class="alert alert-warning mb-0">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    No hay horarios disponibles para esta fecha.
+                </div>
+            `;
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Error consultando disponibilidad:",
+            error
+        );
+
+
+        horariosDisponibles.innerHTML = `
+            <div class="alert alert-danger mb-0">
+                No se pudieron cargar los horarios.
+            </div>
+        `;
+
+
+        Swal.fire({
+            icon: "error",
+            title: "Error de disponibilidad",
+            text: error.message
         });
+
+    }
 
 };
 
@@ -824,19 +806,17 @@ const mostrarReservas = () => {
 // ABRIR EDITAR
 // =====================================================
 
-const abrirEditar = (
+const abrirEditar = async (
     id
 ) => {
 
-    const reservas =
-        obtenerReservas();
-
+    // ================================================
+    // OBTENER RESERVA REAL DEL BACKEND
+    // ================================================
 
     const reserva =
-        reservas.find(
-            reserva =>
-                Number(reserva.id) ===
-                Number(id)
+        await obtenerDetalleReserva(
+            id
         );
 
 
@@ -847,23 +827,20 @@ const abrirEditar = (
     }
 
 
-    // ==========================================
-    // COMPROBAR QUE SEA DEL USUARIO ACTUAL
-    // ==========================================
-
-    const usuario =
-        obtenerUsuarioActual();
-
+    // ================================================
+    // COMPROBAR ESTADO
+    // ================================================
 
     if (
-        !usuario ||
-        reserva.email !== usuario.email
+        reserva.estado ===
+        "CANCELADA"
     ) {
 
         Swal.fire({
-            icon: "error",
-            title: "Acceso no permitido",
-            text: "No puedes modificar esta reserva."
+            icon: "warning",
+            title: "Reserva cancelada",
+            text:
+                "No puedes modificar una reserva cancelada."
         });
 
         return;
@@ -871,20 +848,20 @@ const abrirEditar = (
     }
 
 
-    // ==========================================
-    // COMPROBAR QUE SEA FUTURA
-    // ==========================================
+    // ================================================
+    // COMPROBAR FECHA/HORA
+    // ================================================
 
     const fechaHoraReserva =
         convertirFechaHora(
             reserva.fecha,
-            reserva.hora
+            reserva.horaInicio
         );
 
 
     if (
         fechaHoraReserva <=
-        obtenerFechaHoraActual()
+        new Date()
     ) {
 
         Swal.fire({
@@ -894,41 +871,42 @@ const abrirEditar = (
                 "La fecha y hora de esta reserva ya pasaron."
         });
 
-
-        mostrarReservas();
-
         return;
 
     }
 
 
-    // ==========================================
-    // GUARDAR RESERVA SELECCIONADA
-    // ==========================================
+    // ================================================
+    // GUARDAR RESERVA
+    // ================================================
 
     reservaSeleccionada =
         reserva;
 
 
-    // ==========================================
-    // MOSTRAR CANCHA
-    // ==========================================
+    // ================================================
+    // CANCHA
+    // ================================================
 
     editarCancha.value =
         reserva.nombreCancha;
 
 
-    // ==========================================
-    // MOSTRAR FECHA
-    // ==========================================
+    // ================================================
+    // FECHA
+    // ================================================
 
     editarFecha.value =
         reserva.fecha;
 
 
-    // ==========================================
-    // MOSTRAR PRECIO
-    // ==========================================
+    editarFecha.min =
+        obtenerFechaHoy();
+
+
+    // ================================================
+    // PRECIO
+    // ================================================
 
     editarPrecio.value =
         `$${formatearPrecio(
@@ -936,40 +914,33 @@ const abrirEditar = (
         )}`;
 
 
-    // ==========================================
-    // FECHA MÍNIMA
-    // ==========================================
+    // ================================================
+    // HORARIOS
+    // ================================================
 
-    editarFecha.min =
-        obtenerFechaHoy();
-
-
-    // ==========================================
-    // MOSTRAR HORARIOS
-    // ==========================================
-
-    mostrarHorariosDisponibles(
+    await mostrarHorariosDisponibles(
         reserva.fecha
     );
 
 
-    // ==========================================
-    // SELECCIONAR HORARIO ACTUAL
-    // ==========================================
+    // ================================================
+    // SELECCIONAR HORA ACTUAL
+    // ================================================
 
-    setTimeout(() => {
-
-        const botones =
-            document.querySelectorAll(
-                "#horariosDisponibles button"
-            );
+    const botones =
+        document.querySelectorAll(
+            "#horariosDisponibles button"
+        );
 
 
-        botones.forEach(boton => {
+    botones.forEach(
+        boton => {
 
             if (
                 boton.dataset.hora ===
-                reserva.hora
+                formatearHora(
+                    reserva.horaInicio
+                )
             ) {
 
                 boton.classList.remove(
@@ -981,18 +952,17 @@ const abrirEditar = (
                 );
 
                 editarHora.value =
-                    reserva.hora;
+                    boton.dataset.hora;
 
             }
 
-        });
+        }
+    );
 
-    }, 0);
 
-
-    // ==========================================
+    // ================================================
     // MOSTRAR MODAL
-    // ==========================================
+    // ================================================
 
     modalEditar.show();
 
@@ -1000,237 +970,262 @@ const abrirEditar = (
 
 
 // =====================================================
-// CAMBIAR FECHA
+// CAMBIAR FECHA EN MODAL
 // =====================================================
 
-editarFecha.addEventListener(
-    "change",
-    () => {
+if (editarFecha) {
 
-        mostrarHorariosDisponibles(
-            editarFecha.value
-        );
+    editarFecha.addEventListener(
+        "change",
+        async () => {
 
-    }
-);
+            await mostrarHorariosDisponibles(
+                editarFecha.value
+            );
+
+        }
+    );
+
+}
 
 
 // =====================================================
 // GUARDAR CAMBIOS
 // =====================================================
 
-guardarCambios.addEventListener(
-    "click",
-    () => {
+if (guardarCambios) {
+
+    guardarCambios.addEventListener(
+        "click",
+        async () => {
+
+            if (
+                !reservaSeleccionada
+            ) {
+
+                return;
+
+            }
 
 
-        if (
-            !reservaSeleccionada
-        ) {
-
-            return;
-
-        }
+            const usuario =
+                obtenerUsuarioActual();
 
 
-        const nuevaFecha =
-            editarFecha.value;
+            if (
+                !usuario ||
+                !usuario.id
+            ) {
+
+                return;
+
+            }
 
 
-        const nuevaHora =
-            editarHora.value;
+            // =========================================
+            // DATOS
+            // =========================================
+
+            const nuevaFecha =
+                editarFecha.value;
 
 
-        // ==========================================
-        // VALIDAR FECHA Y HORA
-        // ==========================================
-
-        if (
-            !nuevaFecha ||
-            !nuevaHora
-        ) {
-
-            Swal.fire({
-                icon: "warning",
-                title: "Datos incompletos",
-                text:
-                    "Selecciona una fecha y un horario disponible."
-            });
-
-            return;
-
-        }
+            const nuevaHora =
+                editarHora.value;
 
 
-        // ==========================================
-        // VALIDAR FECHA Y HORA FUTURA
-        // ==========================================
-
-        const nuevaFechaHora =
-            convertirFechaHora(
-                nuevaFecha,
-                nuevaHora
-            );
+            const duracion =
+                Number(
+                    reservaSeleccionada.duracion
+                );
 
 
-        if (
-            nuevaFechaHora <=
-            obtenerFechaHoraActual()
-        ) {
+            // =========================================
+            // VALIDAR
+            // =========================================
 
-            Swal.fire({
-                icon: "error",
-                title: "Fecha u hora inválida",
-                text:
-                    "No puedes seleccionar una fecha u hora que ya haya pasado."
-            });
+            if (
+                !nuevaFecha ||
+                !nuevaHora
+            ) {
 
-            return;
+                Swal.fire({
+                    icon: "warning",
+                    title: "Datos incompletos",
+                    text:
+                        "Selecciona una fecha y un horario disponible."
+                });
 
-        }
+                return;
 
-
-        // ==========================================
-        // COMPROBAR DISPONIBILIDAD
-        // ==========================================
-
-        const ocupado =
-            horarioEstaOcupado(
-                reservaSeleccionada,
-                nuevaFecha,
-                nuevaHora
-            );
+            }
 
 
-        if (ocupado) {
+            // =========================================
+            // REQUEST
+            // =========================================
 
-            Swal.fire({
-                icon: "error",
-                title: "Horario no disponible",
-                text:
-                    "La cancha ya está reservada para esa fecha y hora."
-            });
+            const request = {
 
-            // Volver a mostrar horarios
-
-            mostrarHorariosDisponibles(
-                nuevaFecha
-            );
-
-            return;
-
-        }
-
-
-        // ==========================================
-        // OBTENER TODAS LAS RESERVAS
-        // ==========================================
-
-        const reservas =
-            obtenerReservas();
-
-
-        // ==========================================
-        // BUSCAR RESERVA
-        // ==========================================
-
-        const indice =
-            reservas.findIndex(
-                reserva =>
-                    Number(reserva.id) ===
+                canchaId:
                     Number(
-                        reservaSeleccionada.id
-                    )
+                        reservaSeleccionada.canchaId
+                    ),
+
+                fecha:
+                    nuevaFecha,
+
+                horaInicio:
+                    nuevaHora.length === 5
+                        ? `${nuevaHora}:00`
+                        : nuevaHora,
+
+                duracion:
+                    duracion
+
+            };
+
+
+            console.log(
+                "Actualizando reserva:",
+                request
             );
 
 
-        if (
-            indice === -1
-        ) {
+            // =========================================
+            // DESACTIVAR BOTÓN
+            // =========================================
 
-            return;
+            guardarCambios.disabled =
+                true;
+
+
+            guardarCambios.textContent =
+                "Guardando...";
+
+
+            try {
+
+                // =====================================
+                // PUT AL BACKEND
+                // =====================================
+
+                const reservaActualizada =
+                    await apiFetch(
+                        `/api/reservas/${reservaSeleccionada.id}?usuarioId=${usuario.id}`,
+                        {
+                            method: "PUT",
+
+                            body:
+                                JSON.stringify(
+                                    request
+                                )
+                        }
+                    );
+
+
+                console.log(
+                    "Reserva actualizada:",
+                    reservaActualizada
+                );
+
+
+                // =====================================
+                // CERRAR MODAL
+                // =====================================
+
+                modalEditar.hide();
+
+
+                reservaSeleccionada =
+                    null;
+
+
+                // =====================================
+                // RECARGAR
+                // =====================================
+
+                await mostrarReservas();
+
+
+                // =====================================
+                // MENSAJE
+                // =====================================
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Reserva actualizada",
+                    text:
+                        "La reserva fue actualizada correctamente.",
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+
+
+            } catch (error) {
+
+                console.error(
+                    "Error actualizando:",
+                    error
+                );
+
+
+                Swal.fire({
+                    icon: "error",
+                    title: "No se pudo actualizar",
+                    text:
+                        error.message
+                });
+
+
+            } finally {
+
+                guardarCambios.disabled =
+                    false;
+
+                guardarCambios.textContent =
+                    "Guardar cambios";
+
+            }
 
         }
+    );
 
-
-        // ==========================================
-        // ACTUALIZAR SOLO FECHA
-        // ==========================================
-
-        reservas[indice].fecha =
-            nuevaFecha;
-
-
-        // ==========================================
-        // ACTUALIZAR SOLO HORA
-        // ==========================================
-
-        reservas[indice].hora =
-            nuevaHora;
-
-
-        // ==========================================
-        // GUARDAR
-        // ==========================================
-
-        localStorage.setItem(
-            "reservas",
-            JSON.stringify(reservas)
-        );
-
-
-        // ==========================================
-        // CERRAR MODAL
-        // ==========================================
-
-        modalEditar.hide();
-
-
-        reservaSeleccionada =
-            null;
-
-
-        // ==========================================
-        // ACTUALIZAR TABLA
-        // ==========================================
-
-        mostrarReservas();
-
-
-        // ==========================================
-        // MENSAJE
-        // ==========================================
-
-        Swal.fire({
-            icon: "success",
-            title: "Reserva actualizada",
-            text:
-                "La fecha y hora fueron actualizadas correctamente.",
-            timer: 2000,
-            showConfirmButton: false
-        });
-
-    }
-);
+}
 
 
 // =====================================================
 // CANCELAR RESERVA
 // =====================================================
 
-const cancelarReserva = (
+const cancelarReserva = async (
     id
 ) => {
 
-    const reservas =
-        obtenerReservas();
+    const usuario =
+        obtenerUsuarioActual();
 
+
+    if (
+        !usuario ||
+        !usuario.id
+    ) {
+
+        window.location.href =
+            "./inicio-sesion.html";
+
+        return;
+
+    }
+
+
+    // ================================================
+    // OBTENER DETALLE
+    // ================================================
 
     const reserva =
-        reservas.find(
-            reserva =>
-                Number(reserva.id) ===
-                Number(id)
+        await obtenerDetalleReserva(
+            id
         );
 
 
@@ -1241,24 +1236,20 @@ const cancelarReserva = (
     }
 
 
-    // ==========================================
-    // COMPROBAR USUARIO
-    // ==========================================
-
-    const usuario =
-        obtenerUsuarioActual();
-
+    // ================================================
+    // VALIDAR ESTADO
+    // ================================================
 
     if (
-        !usuario ||
-        reserva.email !== usuario.email
+        reserva.estado ===
+        "CANCELADA"
     ) {
 
         Swal.fire({
-            icon: "error",
-            title: "Acceso no permitido",
+            icon: "warning",
+            title: "Reserva cancelada",
             text:
-                "No puedes cancelar esta reserva."
+                "Esta reserva ya está cancelada."
         });
 
         return;
@@ -1266,105 +1257,97 @@ const cancelarReserva = (
     }
 
 
-    // ==========================================
-    // CONFIRMAR CANCELACIÓN
-    // ==========================================
+    // ================================================
+    // CONFIRMAR
+    // ================================================
 
-    Swal.fire({
+    const resultado =
+        await Swal.fire({
 
-        title: "¿Cancelar reserva?",
-
-        text:
-            `Vas a cancelar la reserva de ${reserva.nombreCancha}.`,
-
-        icon: "warning",
-
-        showCancelButton: true,
-
-        confirmButtonText:
-            "Sí, cancelar",
-
-        cancelButtonText:
-            "No"
-
-    }).then(resultado => {
-
-
-        if (
-            !resultado.isConfirmed
-        ) {
-
-            return;
-
-        }
-
-
-        // ==========================================
-        // BUSCAR RESERVA
-        // ==========================================
-
-        const indice =
-            reservas.findIndex(
-                reserva =>
-                    Number(reserva.id) ===
-                    Number(id)
-            );
-
-
-        if (
-            indice === -1
-        ) {
-
-            return;
-
-        }
-
-
-        // ==========================================
-        // CAMBIAR ESTADO
-        // ==========================================
-
-        reservas[indice].estado =
-            "CANCELADA";
-
-
-        // ==========================================
-        // GUARDAR
-        // ==========================================
-
-        localStorage.setItem(
-            "reservas",
-            JSON.stringify(reservas)
-        );
-
-
-        // ==========================================
-        // ACTUALIZAR TABLA
-        // ==========================================
-
-        mostrarReservas();
-
-
-        // ==========================================
-        // MENSAJE
-        // ==========================================
-
-        Swal.fire({
-
-            icon: "success",
-
-            title: "Reserva cancelada",
+            title:
+                "¿Cancelar reserva?",
 
             text:
-                "La reserva fue cancelada correctamente.",
+                `Vas a cancelar la reserva de ${reserva.nombreCancha}.`,
 
-            timer: 2000,
+            icon:
+                "warning",
 
-            showConfirmButton: false
+            showCancelButton:
+                true,
+
+            confirmButtonText:
+                "Sí, cancelar",
+
+            cancelButtonText:
+                "No",
+
+            confirmButtonColor:
+                "#d33"
 
         });
 
-    });
+
+    if (
+        !resultado.isConfirmed
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        // =============================================
+        // PATCH AL BACKEND
+        // =============================================
+
+        await apiFetch(
+            `/api/reservas/${id}/cancelar?usuarioId=${usuario.id}`,
+            {
+                method: "PATCH"
+            }
+        );
+
+
+        // =============================================
+        // RECARGAR
+        // =============================================
+
+        await mostrarReservas();
+
+
+        // =============================================
+        // MENSAJE
+        // =============================================
+
+        Swal.fire({
+            icon: "success",
+            title: "Reserva cancelada",
+            text:
+                "La reserva fue cancelada correctamente.",
+            timer: 2000,
+            showConfirmButton: false
+        });
+
+
+    } catch (error) {
+
+        console.error(
+            "Error cancelando:",
+            error
+        );
+
+
+        Swal.fire({
+            icon: "error",
+            title: "No se pudo cancelar",
+            text:
+                error.message
+        });
+
+    }
 
 };
 
@@ -1375,25 +1358,34 @@ const cancelarReserva = (
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    async () => {
 
-        // Comprobar sesión
+        // =============================================
+        // COMPROBAR USUARIO
+        // =============================================
 
         const usuario =
             obtenerUsuarioActual();
 
 
-        if (!usuario) {
+        if (
+            !usuario ||
+            !usuario.id
+        ) {
 
             window.location.href =
-                "inicio-sesion.html";
+                "./inicio-sesion.html";
 
             return;
 
         }
 
 
-        mostrarReservas();
+        // =============================================
+        // CARGAR RESERVAS
+        // =============================================
+
+        await mostrarReservas();
 
     }
 );
