@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!preloaderVisto) {
         localStorage.setItem("preloaderVisto", "true");
-        window.location.href = "./html/preloader.html";
+        window.location.href = "./pages/preloader.html";
     }
 });
 

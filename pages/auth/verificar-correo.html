@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verificar correo | Cancheros</title>
+
+    <link
+        rel="stylesheet"
+        href="../../styles/auth/login_registro.css"
+    >
+
+    <link
+        rel="shortcut icon"
+        href="../../assets/images/logos/favicon.ico"
+        type="image/x-icon"
+    >
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- LADO IZQUIERDO -->
+        <section class="pitch">
+
+            <div class="pitch-brand">
+                <span class="dot"></span>
+                <span>Cancha Lista</span>
+            </div>
+
+            <div class="pitch-center">
+
+                <div class="clock">
+                    4-3-2-1
+
+                    <small>
+                        Un último paso antes del partido
+                    </small>
+                </div>
+
+            </div>
+
+            <p class="pitch-copy">
+                Verifica tu correo electrónico para completar
+                tu registro y comenzar a reservar tus canchas.
+                <strong>Tu cuenta estará lista para jugar.</strong>
+            </p>
+
+            <svg
+                class="pitch-svg"
+                viewBox="0 0 200 200"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="70"
+                    stroke="#f2f0e9"
+                    stroke-width="1.5"
+                />
+
+                <circle
+                    cx="100"
+                    cy="100"
+                    r="3"
+                    fill="#f2f0e9"
+                />
+
+                <line
+                    x1="100"
+                    y1="0"
+                    x2="100"
+                    y2="200"
+                    stroke="#f2f0e9"
+                    stroke-width="1"
+                />
+            </svg>
+
+        </section>
+
+
+        <!-- LADO DERECHO -->
+        <section class="form-side">
+
+            <div class="form-card">
+
+                <p class="eyebrow">
+                    Confirmación de cuenta
+                </p>
+
+                <h1>
+                    Verifica tu correo
+                </h1>
+
+                <p class="subtitle">
+                    Hemos enviado un código de verificación
+                    a tu correo electrónico. Ingresa el código
+                    para confirmar tu cuenta.
+                </p>
+
+                <form id="form-verificacion">
+
+                    <div class="field">
+
+                        <label for="codigo">
+                            Código de verificación
+                        </label>
+
+                        <input
+                            type="text"
+                            id="codigo"
+                            maxlength="6"
+                            inputmode="numeric"
+                            autocomplete="one-time-code"
+                            placeholder="Ingresa el código"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        Verificar correo
+                    </button>
+
+                </form>
+
+                <div class="divider">
+                    o
+                </div>
+
+                <p class="switch-line">
+                    ¿No recibiste el código?
+                    <a href="#" class="link">
+                        Reenviar código
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="../../js/auth/verificar-correo.js"
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/sweetalert2@11"
+    ></script>
+
+</body>
+
+</html>
